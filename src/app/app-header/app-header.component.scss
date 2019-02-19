@@ -1,0 +1,36 @@
+@import '../../sass/variables';
+
+h1 {
+  color: $textOnDark;
+}
+.wrapper {
+  width: 92%;
+  margin: 0 auto;
+}
+
+#app-header {
+  background: $darkColor;
+  padding: 10px 0px;
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#profile {
+  display: flex;
+  color: $textOnDark;
+  width: 20%;
+  align-items: center;
+  white-space: nowrap;
+  justify-content: flex-end;
+}
+
+#profile img {
+  width: 60px;
+  height: 100%;
+  margin-right: 20px;
+  border-radius: 50%;
+}
