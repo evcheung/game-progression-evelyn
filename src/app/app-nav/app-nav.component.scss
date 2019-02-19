@@ -1,0 +1,21 @@
+@import '../../sass/variables';
+
+#app-nav {
+  background: $mediumColor;
+}
+
+.nav_container {
+  color: $textOnDark;
+  padding: 10px 0px;
+}
+
+#nav_container--menu {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+#nav_container--menu li {
+  padding: 0px 10px;
+  height: 100%;
+}

@@ -3,23 +3,22 @@
 h1 {
   color: $textOnDark;
 }
-.wrapper {
-  width: 92%;
-  margin: 0 auto;
-}
 
 #app-header {
   background: $darkColor;
   padding: 10px 0px;
-}
-
-.header-content {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-#profile {
+.header_container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#profile_container {
   display: flex;
   color: $textOnDark;
   width: 20%;
@@ -28,7 +27,7 @@ h1 {
   justify-content: flex-end;
 }
 
-#profile img {
+#profile_container img {
   width: 60px;
   height: 100%;
   margin-right: 20px;

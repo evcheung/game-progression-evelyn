@@ -1,0 +1,9 @@
+@import '../../sass/variables';
+
+#app-footer {
+  background: $mediumColor;
+  padding: 20px 0px;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+}
