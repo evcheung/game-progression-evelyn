@@ -13,10 +13,14 @@ import { GamesComponent } from './games/games.component';
 import { BodyComponent } from './body/body.component';
 
 import { DataService } from './service/database.service';
+import { ProfileComponent } from './profile/profile.component';
 
-// file structure: features (components, summarize all components into index.ts file and export all, then import in the [component]module.ts, store, ),
+// summarize all components into index.ts file and export all, then import in the [component]module.ts),
 // modules (services go in with the features/modules),
 // root (root feature)
+
+// features = things that do not consume the same modules
+// root feature = header, nav, body, footer, for example
 
 // separate into routing module, and further isolate into thigns such as Dashboard Routing, etc
 // explore lazy loading later on in the sections
@@ -30,6 +34,7 @@ import { DataService } from './service/database.service';
     DashboardComponent,
     GamesComponent,
     BodyComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-interface Response {
+export interface Response {
   id: number;
   firstName: string;
   lastName: string;
