@@ -10,6 +10,6 @@ export class DataService {
   baseUrl = 'localhost:3000';
 
   getProfile() {
-    return this.http.get(this.baseUrl + '/profiles');
+    return this.http.get(this.baseUrl + '/profile');
   }
 }
