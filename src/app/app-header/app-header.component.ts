@@ -14,9 +14,9 @@ export class AppHeaderComponent implements OnInit {
   constructor(private dataService: DataService) {
     this.dataService.getProfile()
       .subscribe(
-        (response: Response) => {
-          const data = response.json();
-          console.log(data);
+        response => {
+          // const data = response.json();
+          console.log(response.id);
         },
         error => console.log(error)
       );
