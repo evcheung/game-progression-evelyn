@@ -13,7 +13,8 @@ import { GamesComponent } from './features/games/games.component';
 import { BodyComponent } from './root/components/body/body.component';
 
 import { DataService } from './features/profile/service/profile-data.service';
-import { ProfileComponent } from './features/profile/profile.component';
+import { ProfileComponent } from './features/profile/components/profile/profile.component';
+import { ProfileEditComponent } from './features/profile/components/profile-edit/profile-edit.component';
 
 // summarize all components into index.ts file and export all, then import in the [component]module.ts),
 // modules (services go in with the features/modules),
@@ -35,6 +36,7 @@ import { ProfileComponent } from './features/profile/profile.component';
     GamesComponent,
     BodyComponent,
     ProfileComponent,
+    ProfileEditComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,4 @@
-@import '../../../sass/variables';
+@import '../../../../../sass/variables';
 
 .profile_container--header {
   display: flex;
@@ -21,6 +21,7 @@
   border: none;
   background: $lightColor;
   color: $textOnWhite;
+  cursor: pointer;
 }
 
 .profile_container--info {
@@ -37,6 +38,6 @@
   text-decoration: inherit;
 }
 
-.profile_container--info div {
+.profile_container--info div:not(:last-child) {
   margin-bottom: 12px;
 }

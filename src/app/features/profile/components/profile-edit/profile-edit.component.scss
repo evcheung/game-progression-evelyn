@@ -1,0 +1,53 @@
+@import '../../../../../sass/variables';
+
+.profile-edit_container--header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 12px;
+  background: $mediumColor;
+  color: $textOnDark;
+  border-radius: 0.4rem;
+}
+
+.profile-edit_container--header h2 {
+  font-size: 1rem;
+}
+
+.profile-edit_container--header button {
+  padding: 6px 46px;
+  text-transform: uppercase;
+  border-radius: 0.25rem;
+  border: none;
+  background: $lightColor;
+  color: $textOnWhite;
+  cursor: pointer;
+}
+
+.profile-edit_container--info {
+  padding: 12px;
+  background: $mediumColor;
+  color: $textOnDark;
+  border-radius: 0.4rem;
+  margin-top: 12px;
+  font-size: 0.8rem;
+}
+
+.profile-edit_container--info input {
+  width: 16rem;
+  margin-top: 4px;
+  background: #d0d6da;
+  border: none;
+  box-shadow: none;
+  padding: 4px;
+  color: $placeholderText;
+}
+
+.profile-edit_container--info div:not(:last-child) {
+  margin-bottom: 12px;
+}
+
+#saveButton {
+  background:#6bab37;
+  margin-right: 6px;
+}
