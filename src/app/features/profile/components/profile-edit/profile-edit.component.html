@@ -1,34 +1,35 @@
 <div id='profile-edit-body'>
   <div class="profile-edit_container wrapper">
-    <div class="profile-edit_container--header">
-      <h2>Edit My Profile</h2>
-      <div class="buttonContainer">
-        <a routerLink=""><button id="saveButton">Save</button></a>
-        <a routerLink=""><button id="cancelButton">Cancel</button></a>
-      </div>
-    </div>
-
-    <div class="profile-edit_container--info">
-      <div>
-        <p><strong>First Name:</strong></p>
-        <input type="text" value="{{ profile.firstName }}">
+    <form id="profileForm" (ngSubmit)="onSubmit()" #f="ngForm">
+      <div class="profile-edit_container--header">
+        <h2>Edit My Profile</h2>
+        <div class="buttonContainer">
+          <a><button id="saveButton" type="submit" >Save</button></a>
+          <a><button id="cancelButton">Cancel</button></a>
+        </div>
       </div>
 
-      <div>
-        <p><strong>Last Name:</strong></p>
-        <input type="text" value="{{ profile.lastName }}">
-      </div>
+      <div class="profile-edit_container--info">
+        <div class="form-group">
+          <label for="firstName"><strong>First Name:</strong></label>
+          <input type="text" value="{{ profile.firstName }}" id="firstName" name="firstName" ngModel>
+        </div>
 
-      <div>
-        <p><strong>Avatar Image Url:</strong></p>
-        <input type="text" value="http://localhost:4200/assets/{{ profile.image }}">
-      </div>
+        <div class="form-group">
+          <label for="lastName"><strong>Last Name:</strong></label>
+          <input type="text" value="{{ profile.lastName }}" id="lastName" name="lastName" ngModel>
+        </div>
 
-      <div>
-        <p><strong>Average Number of Hours to Game Per Day:</strong></p>
-        <input type="text" value="{{ profile.averageNumberOfHoursPerDay }}">
-      </div>
+        <div class="form-group">
+          <label for="imageUrl"><strong>Avatar Image Url:</strong></label>
+          <input type="text" value="http://localhost:4200/assets/{{ profile.image }}" id="imageUrl" name="imageUrl" ngModel>
+        </div>
 
-    </div>
+        <div class="form-group">
+          <label for="avgHours"><strong>Average Number of Hours to Game Per Day:</strong></label>
+          <input type="text" value="{{ profile.averageNumberOfHoursPerDay }}" id="avgHours" name="avgHours" ngModel>
+        </div>
+      </div>
+    </form>
   </div>
 </div>

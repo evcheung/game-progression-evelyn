@@ -43,6 +43,10 @@
   color: $placeholderText;
 }
 
+.profile-edit_container--info label {
+  display: block;
+}
+
 .profile-edit_container--info div:not(:last-child) {
   margin-bottom: 12px;
 }
