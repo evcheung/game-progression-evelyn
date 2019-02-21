@@ -1,4 +1,4 @@
-@import '../../sass/variables';
+@import '../../../../sass/variables';
 
 #app-nav {
   background: $mediumColor;
@@ -16,14 +16,14 @@
 
 #nav_container--menu li {
   display: inline-block;
-  padding: 10px 10px;
+  padding: 10px 12px;
 }
 
-#nav_container--menu li:hover {
+#nav_container--menu a:hover {
   background: $menuHighlight;
 }
 
-#nav_container--menu li a {
+#nav_container--menu a {
   color: inherit;
   text-decoration: inherit;
 }

@@ -5,15 +5,15 @@ import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
-import { AppHeaderComponent } from './app-header/app-header.component';
-import { AppNavComponent } from './app-nav/app-nav.component';
-import { FooterComponent } from './footer/footer.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { GamesComponent } from './games/games.component';
-import { BodyComponent } from './body/body.component';
+import { AppHeaderComponent } from './root/components/app-header/app-header.component';
+import { AppNavComponent } from './root/components/app-nav/app-nav.component';
+import { FooterComponent } from './root/components/footer/footer.component';
+import { DashboardComponent } from './features/dashboard/dashboard.component';
+import { GamesComponent } from './features/games/games.component';
+import { BodyComponent } from './root/components/body/body.component';
 
-import { DataService } from './service/database.service';
-import { ProfileComponent } from './profile/profile.component';
+import { DataService } from './features/profile/service/profile-data.service';
+import { ProfileComponent } from './features/profile/profile.component';
 
 // summarize all components into index.ts file and export all, then import in the [component]module.ts),
 // modules (services go in with the features/modules),

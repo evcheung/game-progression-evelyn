@@ -1,0 +1,27 @@
+<div id='profile-body'>
+  <div class="profile_container wrapper">
+    <div class="profile_container--header">
+      <h2>My Profile</h2>
+      <button>Edit</button>
+    </div>
+
+    <div class="profile_container--info">
+      <div>
+        <p><strong>Name:</strong></p>
+        <p>{{ profile.firstName }} {{ profile.lastName }}</p>
+      </div>
+
+      <div>
+        <p><strong>Avatar Image Url:</strong></p>
+        <!-- TODO: use a base url that can be easily replaced in prod? -->
+        <p><a href="http://localhost:4200/assets/{{ profile.image }}">{{ profile.image }}</a></p>
+      </div>
+
+      <div>
+        <p><strong>Average Number of Hours to Game Per Day:</strong></p>
+        <p>{{ profile.averageNumberOfHoursPerDay }}</p>
+      </div>
+
+    </div>
+  </div>
+</div>

@@ -1,20 +1,23 @@
 import { Component, OnInit } from '@angular/core';
-import { DataService } from '../service/database.service';
-@Component({
-  selector: 'app-header',
-  templateUrl: './app-header.component.html',
-  styleUrls: ['./app-header.component.scss']
-})
+import { DataService } from './service/profile-data.service';
 
-export class AppHeaderComponent implements OnInit {
+@Component({
+  selector: 'app-profile',
+  templateUrl: './profile.component.html',
+  styleUrls: ['./profile.component.scss']
+})
+export class ProfileComponent implements OnInit {
+
 
   profile = {
     firstName: '',
     lastName: '',
     image: '',
+    averageNumberOfHoursPerDay: 0,
   };
 
   constructor(private dataService: DataService) {
+
     this.dataService.getProfile()
       .subscribe(
         response => {

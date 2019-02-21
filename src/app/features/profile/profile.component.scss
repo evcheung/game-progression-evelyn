@@ -1,0 +1,42 @@
+@import '../../../sass/variables';
+
+.profile_container--header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 12px;
+  background: $mediumColor;
+  color: $textOnDark;
+  border-radius: 0.4rem;
+}
+
+.profile_container--header h2 {
+  font-size: 1rem;
+}
+
+.profile_container--header button {
+  padding: 6px 46px;
+  text-transform: uppercase;
+  border-radius: 0.25rem;
+  border: none;
+  background: $lightColor;
+  color: $textOnWhite;
+}
+
+.profile_container--info {
+  padding: 12px;
+  background: $mediumColor;
+  color: $textOnDark;
+  border-radius: 0.4rem;
+  margin-top: 12px;
+  font-size: 0.8rem;
+}
+
+.profile_container--info a {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+.profile_container--info div {
+  margin-bottom: 12px;
+}
