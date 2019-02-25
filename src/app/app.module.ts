@@ -18,6 +18,7 @@ import { ProfileEditComponent } from './features/profile/components/profile-edit
 
 // Services
 import { DataService } from './features/profile/service/profile-data.service';
+import { HoursValidatorDirective } from './features/profile/components/profile-edit/hours-validator.directive';
 
 // summarize all components into index.ts file and export all, then import in the [component]module.ts),
 // modules (services go in with the features/modules),
@@ -40,6 +41,7 @@ import { DataService } from './features/profile/service/profile-data.service';
     BodyComponent,
     ProfileComponent,
     ProfileEditComponent,
+    HoursValidatorDirective,
   ],
   imports: [
     BrowserModule,
