@@ -5,7 +5,7 @@
         <h2>Edit My Profile</h2>
         <div class="buttonContainer">
           <a><button id="saveButton" type="submit" [disabled]="!f.valid">Save</button></a>
-          <a><button id="cancelButton">Cancel</button></a>
+          <a><button id="cancelButton" type="button" (click)="onCancel()" >Cancel</button></a>
         </div>
       </div>
 
