@@ -23,10 +23,6 @@ export class ProfileEditComponent implements OnInit {
   // TODO: learn more about ViewChild
   @ViewChild('f') profileForm: NgForm;
 
-  onSubmit() {
-    console.log(this.profileForm.value);
-  }
-
   constructor(private dataService: DataService) {
 
     this.dataService.getProfile()
@@ -41,6 +37,21 @@ export class ProfileEditComponent implements OnInit {
 
     // console.log(this.profileForm.value);
     // TODO: why doesn't this work?
+
+  }
+
+  onSubmit() {
+    console.log(this.profileForm.value);
+  }
+
+  onSave() {
+    this.dataService.updateProfile(this.profile)
+      .subscribe(
+        response => {
+          console.log('UPDATED', response);
+        },
+        error => console.log('ERROR UPDATING', error)
+      );
 
   }
 

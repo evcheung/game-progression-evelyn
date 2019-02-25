@@ -18,4 +18,8 @@ export class DataService {
   getProfile() {
     return this.http.get<Response>(this.baseUrl + '/profile'); // typecasting, observables
   }
+
+  updateProfile(profile: {}) {
+    return this.http.put<Response>(this.baseUrl + '/profile', profile);
+  }
 }
