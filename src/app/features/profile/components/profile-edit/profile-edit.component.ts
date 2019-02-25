@@ -1,7 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { DataService } from '../../service/profile-data.service';
 import { NgForm } from '@angular/forms';
-import { AbstractControl, ValidatorFn } from '@angular/forms';
 @Component({
   selector: 'app-profile-edit',
   templateUrl: './profile-edit.component.html',
@@ -11,12 +10,7 @@ import { AbstractControl, ValidatorFn } from '@angular/forms';
 export class ProfileEditComponent implements OnInit {
 
   // TODO: bad to keep repeating this object instantiation? But every component may use different items
-  profile = {
-    firstName: '',
-    lastName: '',
-    image: '',
-    averageNumberOfHoursPerDay: 0,
-  };
+  profile = { };
 
   aboveZero = false;
 
@@ -26,25 +20,13 @@ export class ProfileEditComponent implements OnInit {
   constructor(private dataService: DataService) {
 
     this.dataService.getProfile()
-      .subscribe(
-        response => {
-          console.log('success', response);
-          this.profile = response;
-          console.log('form', this.profileForm.value);
-        },
-        error => console.log(error)
-      );
-
-    // console.log(this.profileForm.value);
-    // TODO: why doesn't this work?
-
+      .subscribe({
+        next: data => { this.profile = data; },
+        error: err => { console.log('Error getting profile.', err); }
+      });
   }
 
   onSubmit() {
-    console.log(this.profileForm.value);
-  }
-
-  onSave() {
     this.dataService.updateProfile(this.profile)
       .subscribe(
         response => {
@@ -52,9 +34,7 @@ export class ProfileEditComponent implements OnInit {
         },
         error => console.log('ERROR UPDATING', error)
       );
-
   }
-
 
   ngOnInit() {
   }

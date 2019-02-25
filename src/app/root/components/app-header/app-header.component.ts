@@ -9,21 +9,24 @@ import { DataService } from '../../../features/profile/service/profile-data.serv
 
 export class AppHeaderComponent implements OnInit {
 
-  profile = {
-    firstName: '',
-    lastName: '',
-    image: '',
-  };
+  profile = { };
 
   constructor(private dataService: DataService) {
+    // this.dataService.getProfile()
+    //   .subscribe(
+    //     response => {
+    //       this.profile = response;
+    //     },
+    //     error => console.log(error)
+    //   );
+
     this.dataService.getProfile()
-      .subscribe(
-        response => {
-          console.log(response);
-          this.profile = response;
-        },
-        error => console.log(error)
-      );
+      .subscribe({
+        // TODO: investigate why next(data) {...} syntax did not work. Scope problem? maybe this.profile didn't have access
+        next: data => { this.profile = data; },
+        error: err => { console.log('Error getting profile.', err); }
+      });
+
   }
 
   ngOnInit() {
