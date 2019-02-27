@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { DataService } from '../../service/profile-data.service';
+import { DataService } from '../../../../modules/profile/services/profile-data.service';
 import { NgForm } from '@angular/forms';
 import {Router} from '@angular/router';
 @Component({
@@ -12,11 +12,12 @@ export class ProfileEditComponent implements OnInit {
 
   // TODO: bad to keep repeating this object instantiation? But every component may use different items
   profile = {
-    // firstName: '',
-    // lastName: '',
-    // image: '',
-    // averageNumberOfHoursPerDay: 0,
-    // languageId: 0
+    id: 0,
+    firstName: '',
+    lastName: '',
+    image: '',
+    averageNumberOfHoursPerDay: 0,
+    languageId: 0
   };
 
   aboveZero = false;
@@ -35,19 +36,18 @@ export class ProfileEditComponent implements OnInit {
 
   onSubmit() {
     this.dataService.updateProfile(this.profile)
-      .subscribe(
-        response => {
-          console.log('UPDATED', response);
+      .subscribe({
+        next: data => {
+          this.profile = data;
+          this.router.navigate(['/my-profile']);
         },
-        error => console.log('ERROR UPDATING', error)
-      );
+        error: err => { console.log('Error getting profile.', err); }
+      });
   }
 
   onCancel() {
-    this.profileForm.dirty ?
-    confirm('Are you sure you want to leave without saving changes?')
-      ? this.router.navigate(['/my-profile'])
-      : null
+    this.profileForm.dirty
+    ? confirm('Are you sure you want to leave without saving changes?') && this.router.navigate(['/my-profile'])
     : this.router.navigate(['/my-profile']);
   }
 

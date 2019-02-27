@@ -4,6 +4,8 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+// import { environment } from '../environments/environment'; // Angular CLI environemnt
 
 // Components
 import { AppComponent } from './app.component';
@@ -13,12 +15,10 @@ import { FooterComponent } from './root/components/footer/footer.component';
 import { DashboardComponent } from './features/dashboard/dashboard.component';
 import { GamesComponent } from './features/games/games.component';
 import { BodyComponent } from './root/components/body/body.component';
-import { ProfileComponent } from './features/profile/components/profile/profile.component';
-import { ProfileEditComponent } from './features/profile/components/profile-edit/profile-edit.component';
 
-// Services
-import { DataService } from './features/profile/service/profile-data.service';
-import { HoursValidatorDirective } from './features/profile/components/profile-edit/hours-validator.directive';
+// Feature Modules
+import { ProfileModule } from './modules/profile/profile.module';
+
 
 // summarize all components into index.ts file and export all, then import in the [component]module.ts),
 // modules (services go in with the features/modules),
@@ -39,17 +39,25 @@ import { HoursValidatorDirective } from './features/profile/components/profile-e
     DashboardComponent,
     GamesComponent,
     BodyComponent,
-    ProfileComponent,
-    ProfileEditComponent,
-    HoursValidatorDirective,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    ProfileModule,
+    // StoreModule.forRoot(reducers),
+    StoreDevtoolsModule.instrument({
+      maxAge: 25,
+      logOnly: false,
+      features: {
+        pause: false,
+        lock: true,
+        persist: true
+      }
+    })
   ],
-  providers: [DataService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
