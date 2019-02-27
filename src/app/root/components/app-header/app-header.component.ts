@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DataService } from '../../../features/profile/service/profile-data.service';
+import { DataService } from '../../../modules/profile/services/profile-data.service';
 
 @Component({
   selector: 'app-header',

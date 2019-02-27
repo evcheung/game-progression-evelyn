@@ -1,17 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { throwError, of } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 import { environment } from '../../../../environments/environment';
+import { Response } from '../../interface/components/profile/profile-data.interface';
 
-export interface Response {
-  id: number;
-  firstName: string;
-  lastName: string;
-  image: string;
-  languageId: number;
-  averageNumberOfHoursPerDay: number;
-}
 @Injectable()
 export class DataService {
   constructor(private http: HttpClient) { }

@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { DataService } from '../../service/profile-data.service';
+import { DataService } from '../../../../modules/profile/services/profile-data.service';
 import { NgForm } from '@angular/forms';
 import {Router} from '@angular/router';
 @Component({
@@ -37,7 +37,10 @@ export class ProfileEditComponent implements OnInit {
   onSubmit() {
     this.dataService.updateProfile(this.profile)
       .subscribe({
-        next: data => { this.profile = data; },
+        next: data => {
+          this.profile = data;
+          this.router.navigate(['/my-profile']);
+        },
         error: err => { console.log('Error getting profile.', err); }
       });
   }
