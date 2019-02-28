@@ -22,7 +22,9 @@ import { ProfileModule } from './modules/profile/profile.module';
 // ngRx
 // import { profileReducer } from './modules/profile/store/profile.reducer';
 import { StoreModule } from '@ngrx/store';
-
+import { EffectsModule } from '@ngrx/effects';
+import { AppEffects } from './app.effects';
+import { ProfileEffects } from '../app/modules/profile/store/profile.effects';
 // summarize all components into index.ts file and export all, then import in the [component]module.ts),
 // modules (services go in with the features/modules),
 // root (root feature)
@@ -59,6 +61,7 @@ import { StoreModule } from '@ngrx/store';
         persist: true
       }
     }),
+    EffectsModule.forRoot([ProfileEffects]),
   ],
   providers: [],
   bootstrap: [AppComponent]

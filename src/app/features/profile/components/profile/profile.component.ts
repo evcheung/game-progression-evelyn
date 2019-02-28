@@ -1,10 +1,10 @@
-import { Test } from './../../../../modules/profile/store/profile.actions';
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../../../../modules/profile/services/profile-data.service';
 import { Store } from '@ngrx/store';
-import { AppState } from '../../../../modules/profile/store/profile.reducer';
+import { Response } from '../../../../../app/modules/interface/components/profile/profile-data.interface';
+import { GetProfile } from './../../../../modules/profile/store/profile.actions';
+import { getProfileState } from '../../../../modules/profile/store/profile.reducer';
 // import { Observable } from 'rxjs/Observable';
-import * as ProfileActions from '../../../../modules/profile/store/profile.reducer';
 
 @Component({
   selector: 'app-profile',
@@ -14,16 +14,9 @@ import * as ProfileActions from '../../../../modules/profile/store/profile.reduc
 export class ProfileComponent implements OnInit {
 
 
-  profile = {
-    // firstName: '',
-    // lastName: '',
-    // image: '',
-    // averageNumberOfHoursPerDay: 0,
-  };
+  profile = {};
 
-  // testing: Observable<AppState>;
-
-  constructor(private dataService: DataService, private store: Store<AppState>) {
+  constructor(private dataService: DataService, private store: Store<any>) {
 
     // this.dataService.getProfile()
     //   .subscribe(
@@ -34,20 +27,27 @@ export class ProfileComponent implements OnInit {
     //     error => console.log(error)
     //   );
 
-    // this.testing = store.select('profile');
+    // this.dataService.getProfile()
+    //   .subscribe({
+      //     next: data => { this.profile = data; },
+      //     error: err => { console.log('Error getting profile.', err); }
+      //   });
 
-    this.dataService.getProfile()
-      .subscribe({
-        next: data => { this.profile = data; },
-        error: err => { console.log('Error getting profile.', err); }
-      });
+
+      // this.testing = store.select('profile');
   }
 
-  test() {
-    this.store.dispatch(new Test());
-  }
+  // test() {
+  //   this.store.dispatch(new Test());
+  // }
 
   ngOnInit() {
+    this.store.dispatch(new GetProfile());
+    this.profile = this.store.select(getProfileState);
+    console.log('did it work???', this.profile);
+
+    // this.store.select('profile').subscribe(state => console.log('state', state));
+
   }
 
 }
