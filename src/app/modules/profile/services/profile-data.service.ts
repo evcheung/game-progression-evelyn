@@ -3,7 +3,6 @@ import { HttpClient } from '@angular/common/http';
 import { map, catchError } from 'rxjs/operators';
 import { environment } from '../../../../environments/environment';
 import { Response } from '../../interface/components/profile/profile-data.interface';
-
 @Injectable()
 export class DataService {
   constructor(private http: HttpClient) { }

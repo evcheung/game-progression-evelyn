@@ -12,12 +12,12 @@ export class ProfileEditComponent implements OnInit {
 
   // TODO: bad to keep repeating this object instantiation? But every component may use different items
   profile = {
-    id: 0,
-    firstName: '',
-    lastName: '',
-    image: '',
-    averageNumberOfHoursPerDay: 0,
-    languageId: 0
+    // id: 0,
+    // firstName: '',
+    // lastName: '',
+    // image: '',
+    // averageNumberOfHoursPerDay: 0,
+    // languageId: 0
   };
 
   aboveZero = false;

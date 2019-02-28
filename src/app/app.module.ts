@@ -19,6 +19,9 @@ import { BodyComponent } from './root/components/body/body.component';
 // Feature Modules
 import { ProfileModule } from './modules/profile/profile.module';
 
+// ngRx
+// import { profileReducer } from './modules/profile/store/profile.reducer';
+import { StoreModule } from '@ngrx/store';
 
 // summarize all components into index.ts file and export all, then import in the [component]module.ts),
 // modules (services go in with the features/modules),
@@ -46,7 +49,7 @@ import { ProfileModule } from './modules/profile/profile.module';
     HttpClientModule,
     FormsModule,
     ProfileModule,
-    // StoreModule.forRoot(reducers),
+    StoreModule.forRoot({}),
     StoreDevtoolsModule.instrument({
       maxAge: 25,
       logOnly: false,
@@ -55,7 +58,7 @@ import { ProfileModule } from './modules/profile/profile.module';
         lock: true,
         persist: true
       }
-    })
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent]

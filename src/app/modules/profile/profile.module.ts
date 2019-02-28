@@ -8,6 +8,8 @@ import { ProfileRoutingModule } from './profile-routing.module';
 import { DataService } from './services/profile-data.service';
 import { HoursValidatorDirective } from './services/hours-validator.directive';
 
+import { profileReducer } from '../../../app/modules/profile/store/profile.reducer';
+import { StoreModule } from '@ngrx/store';
 
 @NgModule({
   declarations: [
@@ -19,6 +21,7 @@ import { HoursValidatorDirective } from './services/hours-validator.directive';
     CommonModule,
     FormsModule,
     ProfileRoutingModule,
+    StoreModule.forFeature('profile', profileReducer),
   ],
   exports: [
     ProfileComponent,
