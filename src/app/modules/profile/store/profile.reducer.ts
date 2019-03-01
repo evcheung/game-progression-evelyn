@@ -1,6 +1,6 @@
 import * as ProfileActions from './profile.actions';
 import { Response } from '../../interface/components/profile/profile-data.interface';
-export interface AppState {
+export interface ProfileState {
   data: Response;
   loading: boolean;
   error: any;
@@ -45,7 +45,7 @@ export function profileReducer(
       return {
         ...state,
         loading: false,
-        error: 'Error'
+        error: 'Error loading profile'
       };
     }
 

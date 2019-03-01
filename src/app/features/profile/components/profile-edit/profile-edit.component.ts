@@ -1,7 +1,14 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { DataService } from '../../../../modules/profile/services/profile-data.service';
 import { NgForm } from '@angular/forms';
-import {Router} from '@angular/router';
+import { Router } from '@angular/router';
+import { Response } from '../../../../modules/interface/components/profile/profile-data.interface';
+import { Observable } from 'rxjs';
+import { Store } from '@ngrx/store';
+import { GetProfile } from './../../../../modules/profile/store/profile.actions';
+import { ProfileState } from '../../../../modules/profile/store/profile.reducer';
+import { getProfileState } from '../../../../modules/profile/store/profile.selectors';
+
 @Component({
   selector: 'app-profile-edit',
   templateUrl: './profile-edit.component.html',
@@ -10,35 +17,20 @@ import {Router} from '@angular/router';
 
 export class ProfileEditComponent implements OnInit {
 
-  // TODO: bad to keep repeating this object instantiation? But every component may use different items
-  profile = {
-    // id: 0,
-    // firstName: '',
-    // lastName: '',
-    // image: '',
-    // averageNumberOfHoursPerDay: 0,
-    // languageId: 0
-  };
+  profile$: Observable<Response>;
 
   aboveZero = false;
 
   // TODO: learn more about ViewChild
   @ViewChild('f') profileForm: NgForm;
 
-  constructor(private dataService: DataService, private router: Router) {
-
-    this.dataService.getProfile()
-      .subscribe({
-        next: data => { this.profile = data; },
-        error: err => { console.log('Error getting profile.', err); }
-      });
-  }
+  constructor(private dataService: DataService, private router: Router, private store: Store<ProfileState>) { }
 
   onSubmit() {
-    this.dataService.updateProfile(this.profile)
+    this.dataService.updateProfile(this.profile$)
       .subscribe({
         next: data => {
-          this.profile = data;
+          this.profile$ = data;
           this.router.navigate(['/my-profile']);
         },
         error: err => { console.log('Error getting profile.', err); }
@@ -52,6 +44,8 @@ export class ProfileEditComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.store.dispatch(new GetProfile());
+    this.profile$ = this.store.select(getProfileState);
   }
 
 }

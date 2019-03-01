@@ -9,7 +9,7 @@
         </div>
       </div>
 
-      <div class="profile-edit_container--info">
+      <div *ngIf="(profile$ | async) as profile" class="profile-edit_container--info">
         <div class="form-group">
           <label for="firstName"><strong>First Name:</strong></label>
           <input type="text" value="{{ profile.firstName }}" id="firstName" name="firstName" pattern="[a-zA-Z ]*" [(ngModel)]="profile.firstName" #firstName="ngModel" required>

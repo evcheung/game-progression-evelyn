@@ -2,8 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { DataService } from '../../../../modules/profile/services/profile-data.service';
 import { Store } from '@ngrx/store';
 import { GetProfile } from './../../../../modules/profile/store/profile.actions';
-import { AppState } from '../../../../modules/profile/store/profile.reducer';
+import { ProfileState } from '../../../../modules/profile/store/profile.reducer';
 import { getProfileState } from '../../../../modules/profile/store/profile.selectors';
+import { Response } from '../../../../modules/interface/components/profile/profile-data.interface';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -13,9 +14,9 @@ import { Observable } from 'rxjs';
 })
 export class ProfileComponent implements OnInit {
 
-  profile: Observable<any>;
+  profile$: Observable<Response>;
 
-  constructor(private dataService: DataService, private store: Store<AppState>) {
+  constructor(private dataService: DataService, private store: Store<ProfileState>) {
 
     // this.dataService.getProfile()
     //   .subscribe(
@@ -42,14 +43,12 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit() {
     this.store.dispatch(new GetProfile());
-    // this.store.select('profile').subscribe(state => this.profile = state.data);
+    this.profile$ = this.store.select(getProfileState);
 
-    this.profile = this.store.select(getProfileState);
-
-    console.log('did it work???', this.profile);
-
-    // this.store.select('profile').subscribe(state => console.log('state', state));
-
+    // 2 days to do the selector/rendering state into components
+    // Can do a subscribe to the profiles$ observable here
+    // or do async piping in html which will subscribe to the observable too and unwrap it
+    // BUT you will need to rename the observable for it to work in
   }
 
 }

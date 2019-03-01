@@ -16,8 +16,8 @@ export class ProfileEffects {
       switchMap(() => this.dataService.getProfile()
         .pipe(
           map((data: any) => new ProfileActions.GetProfileSuccess(data)),
-          catchError(error => error)
-          // TODO: dispatch error action
+          catchError(error => of(new ProfileActions.GetProfileFail()))
+          // TODO: find out why error action not dispatching
         ))
     );
 
