@@ -17,6 +17,7 @@ export class ProfileEffects {
         .pipe(
           map((data: any) => new ProfileActions.GetProfileSuccess(data)),
           catchError(error => error)
+          // TODO: dispatch error action
         ))
     );
 

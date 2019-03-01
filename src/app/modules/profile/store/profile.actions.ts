@@ -1,6 +1,4 @@
-import { initialState } from './profile.reducer';
 import { Action } from '@ngrx/store';
-// import { AppState } from '../store/profile.reducer';
 import { Response } from '../../interface/components/profile/profile-data.interface';
 
 export enum ActionTypes {
