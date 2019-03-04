@@ -27,7 +27,7 @@ export class GetProfileFail implements Action {
 
 export class UpdateProfile implements Action {
   readonly type = ActionTypes.UPDATE_PROFILE;
-  // constructor(public payload: Response) {}
+  constructor(public payload: any) {}
 }
 
 export class UpdateProfileSuccess implements Action {

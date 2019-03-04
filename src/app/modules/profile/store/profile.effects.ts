@@ -13,9 +13,11 @@ import { getProfileDataState } from '../../../../app/modules/profile/store/profi
 export class ProfileEffects {
   constructor(private actions$: Actions, private router: Router, private dataService: DataService, private store: Store<ProfileState>) {}
 
-  profileData: {} = this.store.select(getProfileDataState).subscribe(val => this.profileData = val);
+  // profileData: {} = this.store.select(getProfileDataState).subscribe(val => this.profileData = val);
   // why doesn't it work if put on separate line from profileData (initialize variable first)?
   // TODO: this isn't using the GetProfile Action, does it need to be refactored?
+
+
 
   @Effect()
   loadProfile$ = this.actions$
@@ -29,18 +31,40 @@ export class ProfileEffects {
         ))
     );
 
+  // @Effect()
+  // updateProfile$ = this.actions$
+  //   .pipe(
+  //     ofType(ProfileActions.ActionTypes.UPDATE_PROFILE),
+  //     switchMap(() => this.dataService.updateProfile(this.profileData)
+  //       .pipe(
+  //         map((data: any) => {
+  //           console.log(this.profileData)
+  //           return new ProfileActions.UpdateProfileSuccess(data);
+  //         }
+  //         ),
+  //         // map(() => this.router.navigate(['/my-profile'])),
+  //         catchError(error => of(new ProfileActions.UpdateProfileFail()))
+  //       ))
+  //   );
+
+  // TODO: Why does using a state selector and passing it into dataService.updateProfile work?
+
+  //
+
   @Effect()
-  updateProfile$ = this.actions$
+    updateProfile$ = this.actions$
     .pipe(
       ofType(ProfileActions.ActionTypes.UPDATE_PROFILE),
-      switchMap(() => this.dataService.updateProfile(this.profileData)
+      map((action: any) => action.payload),
+      switchMap((form) => this.dataService.updateProfile(form)
         .pipe(
           map((data: any) => new ProfileActions.UpdateProfileSuccess(data)),
-          map(() => this.router.navigate(['/my-profile'])),
+          // map(() => this.router.navigate(['/my-profile'])),
           catchError(error => of(new ProfileActions.UpdateProfileFail()))
         ))
     );
 }
 
-// TODO: UpdateProfileSuccess not dispatching before router.navigate
+
+// TODO: UpdateProfileSuccess not dispatching before router.navigate, move it elsewhere (like component)
 // TODO: flow of the data? After submitting the update, does the onInit call GetProfile again to update state?

@@ -24,10 +24,15 @@ export class ProfileEditComponent implements OnInit {
   // TODO: learn more about ViewChild
   @ViewChild('f') profileForm: NgForm;
 
-  constructor(private dataService: DataService, private router: Router, private store: Store<ProfileState>) { }
+  constructor(private router: Router, private store: Store<ProfileState>) { }
 
   onSubmit() {
-    this.store.dispatch(new UpdateProfile());
+    const formValues = {
+      ...this.profileForm.form.value,
+      id: 1,
+      languageId: 1
+    };
+    this.store.dispatch(new UpdateProfile(formValues));
 
     // this.dataService.updateProfile(this.profile$)
       // .subscribe({
@@ -46,7 +51,7 @@ export class ProfileEditComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.store.dispatch(new GetProfile());
+    // this.store.dispatch(new GetProfile());
     this.profile$ = this.store.select(getProfileDataState);
   }
 
