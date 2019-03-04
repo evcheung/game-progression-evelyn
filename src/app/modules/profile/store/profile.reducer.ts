@@ -49,6 +49,30 @@ export function profileReducer(
       };
     }
 
+    case ProfileActions.ActionTypes.UPDATE_PROFILE: {
+      return {
+        ...state,
+        loading: true,
+        error: null
+      };
+    }
+
+    case ProfileActions.ActionTypes.UPDATE_PROFILE_SUCCESS: {
+      return {
+        ...state,
+        data: action.payload,
+        loading: false
+      };
+    }
+
+    case ProfileActions.ActionTypes.UPDATE_PROFILE_FAIL: {
+      return {
+        ...state,
+        loading: false,
+        error: 'Error loading profile'
+      };
+    }
+
     // case ProfileActions.ActionTypes.TEST: {
     //   return {
     //     ...state,

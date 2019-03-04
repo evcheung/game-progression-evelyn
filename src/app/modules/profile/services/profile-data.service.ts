@@ -28,6 +28,8 @@ export class DataService {
   //   return this.http.put<Response>(this.baseUrl + '/profile', profile);
   // }
 
+  // TODO: difference between typing it in paramater vs typecasting?
+
   updateProfile(profile: {}) {
     return this.http.put<Response>(environment.apiUrl + '/profile', profile)
       .pipe(map(

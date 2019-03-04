@@ -3,7 +3,7 @@ import { DataService } from '../../../../modules/profile/services/profile-data.s
 import { Store } from '@ngrx/store';
 import { GetProfile } from './../../../../modules/profile/store/profile.actions';
 import { ProfileState } from '../../../../modules/profile/store/profile.reducer';
-import { getProfileState } from '../../../../modules/profile/store/profile.selectors';
+import { getProfileDataState } from '../../../../modules/profile/store/profile.selectors';
 import { Response } from '../../../../modules/interface/components/profile/profile-data.interface';
 import { Observable } from 'rxjs';
 
@@ -43,7 +43,7 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit() {
     this.store.dispatch(new GetProfile());
-    this.profile$ = this.store.select(getProfileState);
+    this.profile$ = this.store.select(getProfileDataState);
 
     // 2 days to do the selector/rendering state into components
     // Can do a subscribe to the profiles$ observable here

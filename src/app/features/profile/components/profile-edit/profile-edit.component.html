@@ -25,7 +25,7 @@
         <!-- TODO: add base url in path -->
         <div class="form-group">
           <label for="imageUrl"><strong>Avatar Image Url:</strong></label>
-          <input type="text" value="http://localhost:4200/assets/{{ profile.image }}" id="imageUrl" name="imageUrl" [(ngModel)]="profile.image" #imageUrl="ngModel" required>
+          <input type="text" value="{{ profile.image }}" id="imageUrl" name="imageUrl" [(ngModel)]="profile.image" #imageUrl="ngModel" required>
           <p *ngIf="!imageUrl.valid && imageUrl.touched">Please enter a valid URL.</p>
         </div>
 

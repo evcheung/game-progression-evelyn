@@ -5,9 +5,9 @@ import { Router } from '@angular/router';
 import { Response } from '../../../../modules/interface/components/profile/profile-data.interface';
 import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
-import { GetProfile } from './../../../../modules/profile/store/profile.actions';
+import { GetProfile, UpdateProfile } from './../../../../modules/profile/store/profile.actions';
 import { ProfileState } from '../../../../modules/profile/store/profile.reducer';
-import { getProfileState } from '../../../../modules/profile/store/profile.selectors';
+import { getProfileDataState } from '../../../../modules/profile/store/profile.selectors';
 
 @Component({
   selector: 'app-profile-edit',
@@ -27,14 +27,16 @@ export class ProfileEditComponent implements OnInit {
   constructor(private dataService: DataService, private router: Router, private store: Store<ProfileState>) { }
 
   onSubmit() {
-    this.dataService.updateProfile(this.profile$)
-      .subscribe({
-        next: data => {
-          this.profile$ = data;
-          this.router.navigate(['/my-profile']);
-        },
-        error: err => { console.log('Error getting profile.', err); }
-      });
+    this.store.dispatch(new UpdateProfile());
+
+    // this.dataService.updateProfile(this.profile$)
+      // .subscribe({
+      //   next: data => {
+      //     this.profile$ = data;
+      //     this.router.navigate(['/my-profile']);
+      //   },
+      //   error: err => { console.log('Error getting profile.', err); }
+      // });
   }
 
   onCancel() {
@@ -45,7 +47,7 @@ export class ProfileEditComponent implements OnInit {
 
   ngOnInit() {
     this.store.dispatch(new GetProfile());
-    this.profile$ = this.store.select(getProfileState);
+    this.profile$ = this.store.select(getProfileDataState);
   }
 
 }
