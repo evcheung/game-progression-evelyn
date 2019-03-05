@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from '../../../app/modules/dashboard/services/dashboard-data.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -6,10 +7,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
-
-  constructor() { }
+  data;
+  constructor(private dataService: DataService) {}
 
   ngOnInit() {
+    this.dataService.getIncompleteGames().subscribe({
+      next: data => {
+        this.data = data;
+        console.log('GET request success - [dashboard] incomplete games', data);
+      }
+    });
   }
-
 }

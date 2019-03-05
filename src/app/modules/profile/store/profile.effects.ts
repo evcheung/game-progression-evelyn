@@ -2,12 +2,12 @@ import { Injectable } from '@angular/core';
 import { Effect, Actions, ofType } from '@ngrx/effects';
 import * as ProfileActions from './profile.actions';
 import { DataService } from '../../../../app/modules/profile/services/profile-data.service';
-import { switchMap, map, mergeMap, catchError } from 'rxjs/operators';
-import { EMPTY, Observable, of } from 'rxjs';
+import { switchMap, map, catchError } from 'rxjs/operators';
+import { of } from 'rxjs';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { ProfileState } from '../../../../app/modules/profile/store/profile.reducer';
-import { getProfileDataState } from '../../../../app/modules/profile/store/profile.selectors';
+// import { getProfileDataState } from '../../../../app/modules/profile/store/profile.selectors';
 
 @Injectable()
 export class ProfileEffects {

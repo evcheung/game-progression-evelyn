@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { DataService } from '../../../../modules/profile/services/profile-data.service';
 import { Store } from '@ngrx/store';
 import { GetProfile } from './../../../../modules/profile/store/profile.actions';
 import { ProfileState } from '../../../../modules/profile/store/profile.reducer';
@@ -13,11 +12,9 @@ import { Observable } from 'rxjs';
   styleUrls: ['./profile.component.scss']
 })
 export class ProfileComponent implements OnInit {
-
   profile$: Observable<Response>;
 
-  constructor(private dataService: DataService, private store: Store<ProfileState>) {
-
+  constructor(private store: Store<ProfileState>) {
     // this.dataService.getProfile()
     //   .subscribe(
     //     response => {
@@ -26,15 +23,12 @@ export class ProfileComponent implements OnInit {
     //     },
     //     error => console.log(error)
     //   );
-
     // this.dataService.getProfile()
     //   .subscribe({
-      //     next: data => { this.profile = data; },
-      //     error: err => { console.log('Error getting profile.', err); }
-      //   });
-
-
-      // this.testing = store.select('profile');
+    //     next: data => { this.profile = data; },
+    //     error: err => { console.log('Error getting profile.', err); }
+    //   });
+    // this.testing = store.select('profile');
   }
 
   // test() {
@@ -50,5 +44,4 @@ export class ProfileComponent implements OnInit {
     // or do async piping in html which will subscribe to the observable too and unwrap it
     // BUT you will need to rename the observable for it to work in
   }
-
 }

@@ -1,0 +1,43 @@
+@import '../../../sass/variables';
+
+.dashboard_container--header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 12px;
+  background: $mediumColor;
+  color: $textOnDark;
+  border-radius: 0.4rem;
+}
+
+.dashboard_container--header h2 {
+  font-size: 1rem;
+}
+
+.dashboard_container--header button {
+  padding: 6px 46px;
+  text-transform: uppercase;
+  border-radius: 0.25rem;
+  border: none;
+  background: $lightColor;
+  color: $textOnWhite;
+  cursor: pointer;
+}
+
+.dashboard_container--info {
+  padding: 12px;
+  background: $mediumColor;
+  color: $textOnDark;
+  border-radius: 0.4rem;
+  margin-top: 12px;
+  font-size: 0.8rem;
+}
+
+.dashboard_container--info a {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+.dashboard_container--info div:not(:last-child) {
+  margin-bottom: 12px;
+}

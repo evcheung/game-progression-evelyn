@@ -12,13 +12,12 @@ import { AppComponent } from './app.component';
 import { AppHeaderComponent } from './root/components/app-header/app-header.component';
 import { AppNavComponent } from './root/components/app-nav/app-nav.component';
 import { FooterComponent } from './root/components/footer/footer.component';
-import { DashboardComponent } from './features/dashboard/dashboard.component';
 import { GamesComponent } from './features/games/games.component';
 import { BodyComponent } from './root/components/body/body.component';
 
 // Feature Modules
 import { ProfileModule } from './modules/profile/profile.module';
-
+import { DashboardModule } from './modules/dashboard/dashboard.module';
 // ngRx
 // import { profileReducer } from './modules/profile/store/profile.reducer';
 import { StoreModule } from '@ngrx/store';
@@ -40,9 +39,8 @@ import { ProfileEffects } from '../app/modules/profile/store/profile.effects';
     AppHeaderComponent,
     AppNavComponent,
     FooterComponent,
-    DashboardComponent,
     GamesComponent,
-    BodyComponent,
+    BodyComponent
   ],
   imports: [
     BrowserModule,
@@ -50,6 +48,7 @@ import { ProfileEffects } from '../app/modules/profile/store/profile.effects';
     HttpClientModule,
     FormsModule,
     ProfileModule,
+    DashboardModule,
     StoreModule.forRoot({}),
     StoreDevtoolsModule.instrument({
       maxAge: 25,
@@ -60,9 +59,9 @@ import { ProfileEffects } from '../app/modules/profile/store/profile.effects';
         persist: true
       }
     }),
-    EffectsModule.forRoot([ProfileEffects]),
+    EffectsModule.forRoot([ProfileEffects])
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

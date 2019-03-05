@@ -13,10 +13,10 @@ export const initialState = {
     lastName: '',
     image: '',
     averageNumberOfHoursPerDay: 0,
-    languageId: 0,
+    languageId: 0
   },
   loading: false,
-  error: null,
+  error: null
   // test: 0,
 };
 
