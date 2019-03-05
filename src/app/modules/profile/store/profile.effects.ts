@@ -15,10 +15,6 @@ export class ProfileEffects {
 
   // profileData: {} = this.store.select(getProfileDataState).subscribe(val => this.profileData = val);
   // why doesn't it work if put on separate line from profileData (initialize variable first)?
-  // TODO: this isn't using the GetProfile Action, does it need to be refactored?
-
-
-
   @Effect()
   loadProfile$ = this.actions$
     .pipe(

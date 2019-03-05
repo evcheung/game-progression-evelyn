@@ -22,18 +22,19 @@
           <p *ngIf="!lastName.valid && lastName.touched">Please enter a valid surname.</p>
         </div>
 
-        <!-- TODO: add base url in path -->
         <div class="form-group">
-          <label for="imageUrl"><strong>Avatar Image Url:</strong></label>
-          <input type="text" value="{{ profile.image }}" id="imageUrl" name="imageUrl" [(ngModel)]="profile.image" #imageUrl="ngModel" required>
-          <p *ngIf="!imageUrl.valid && imageUrl.touched">Please enter a valid URL.</p>
+          <label for="image"><strong>Avatar Image Url:</strong></label>
+          <input type="text" value="{{ profile.image }}" id="image" name="image" [(ngModel)]="profile.image" #image="ngModel" required>
+          <p *ngIf="!image.valid && image.touched">Please enter a valid URL.</p>
         </div>
 
         <div class="form-group">
-          <label for="avgHours"><strong>Average Number of Hours to Game Per Day:</strong></label>
-          <input type="number" value="{{ profile.averageNumberOfHoursPerDay }}" id="avgHours" name="avgHours" [(ngModel)]="profile.averageNumberOfHoursPerDay" #avgHours="ngModel" appHoursValidator required>
-          <p *ngIf="(!avgHours.valid && avgHours.touched)">Hours must be above or equal to 0.</p>
+          <label for="averageNumberOfHoursPerDay"><strong>Average Number of Hours to Game Per Day:</strong></label>
+          <input type="number" value="{{ profile.averageNumberOfHoursPerDay }}" id="averageNumberOfHoursPerDay" name="averageNumberOfHoursPerDay" [(ngModel)]="profile.averageNumberOfHoursPerDay" #averageNumberOfHoursPerDay="ngModel" appHoursValidator required>
+          <p *ngIf="(!averageNumberOfHoursPerDay.valid && averageNumberOfHoursPerDay.touched)">Hours must be above or equal to 0.</p>
         </div>
+        <!-- TODO: study the #, what it is doing (passing references to where?) -->
+        <!-- Could not detect .valid in <p> when names didn't match with # -->
       </div>
     </form>
   </div>

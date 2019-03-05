@@ -18,8 +18,9 @@ import { getProfileDataState } from '../../../../modules/profile/store/profile.s
 export class ProfileEditComponent implements OnInit {
 
   profile$: Observable<Response>;
+  profileDataState: Response;
 
-  aboveZero = false;
+  // aboveZero = false;
 
   // TODO: learn more about ViewChild
   @ViewChild('f') profileForm: NgForm;
@@ -27,12 +28,18 @@ export class ProfileEditComponent implements OnInit {
   constructor(private router: Router, private store: Store<ProfileState>) { }
 
   onSubmit() {
-    const formValues = {
-      ...this.profileForm.form.value,
-      id: 1,
-      languageId: 1
-    };
-    this.store.dispatch(new UpdateProfile(formValues));
+    if (this.profileForm.valid) {
+      this.store.select(getProfileDataState).subscribe(val => this.profileDataState = val);
+
+      const formValues = {
+        ...this.profileDataState,
+        ...this.profileForm.form.value,
+      };
+
+      this.store.dispatch(new UpdateProfile(formValues));
+    } else {
+      alert('Invalid form');
+    }
 
     // this.dataService.updateProfile(this.profile$)
       // .subscribe({
@@ -51,7 +58,7 @@ export class ProfileEditComponent implements OnInit {
   }
 
   ngOnInit() {
-    // this.store.dispatch(new GetProfile());
+    this.store.dispatch(new GetProfile());
     this.profile$ = this.store.select(getProfileDataState);
   }
 
