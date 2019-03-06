@@ -9,3 +9,4 @@ export interface GamesResponse {
   numberOfHoursToComplete: number;
   isComplete: boolean;
 }
+

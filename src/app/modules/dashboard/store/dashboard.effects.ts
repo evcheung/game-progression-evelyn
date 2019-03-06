@@ -4,18 +4,16 @@ import * as DashboardActions from './dashboard.actions';
 import { DataService } from '../../../../app/modules/dashboard/services/dashboard-data.service';
 import { switchMap, map, catchError } from 'rxjs/operators';
 import { of } from 'rxjs';
-import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-// import { ProfileState } from '../../../../app/modules/profile/store/profile.reducer';
+import { DashboardState } from '../../../../app/modules/dashboard/store/dashboard.reducer';
 import { getProfileDataState } from '../../../../app/modules/profile/store/profile.selectors';
 
 @Injectable()
 export class DashboardEffects {
   constructor(
     private actions$: Actions,
-    private router: Router,
     private dataService: DataService,
-    private store: Store<any>
+    private store: Store<DashboardState>
   ) {}
 
   @Effect()

@@ -1,5 +1,4 @@
 import * as DashboardActions from './dashboard.actions';
-// import { Response } from '../../interface/components/profile/profile-data.interface';
 export interface DashboardState {
   incompleteGames: {};
   gameStats: {
@@ -10,15 +9,8 @@ export interface DashboardState {
   };
   loading: boolean;
   error: any;
-  // test: number;
 }
 export const initialState = {
-  incompleteGames: {
-    name: '',
-    numberOfHoursPlayed: 0,
-    numberOfHoursToComplete: 0,
-    isComplete: false
-  },
   gameStats: {
     timeRemaining: 0,
     incompletePercentage: 0,

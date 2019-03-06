@@ -4,11 +4,9 @@ export enum ActionTypes {
   GET_GAMES = '[Dashboard] Get Games',
   GET_GAMES_SUCCESS = '[Dashboard] Get Games Success',
   GET_GAMES_FAIL = '[Dashboard] Get Games Fail'
-  // TEST = 'Test',
 }
 export class GetGames implements Action {
   readonly type = ActionTypes.GET_GAMES;
-  // constructor(public payload: Response) {}
 }
 
 export class GetGamesSuccess implements Action {
