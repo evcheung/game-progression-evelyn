@@ -1,5 +1,5 @@
 import { Action } from '@ngrx/store';
-import { Response } from '../../interface/components/profile/profile-data.interface';
+import { Response } from '../../interface/components/profile-data.interface';
 
 export enum ActionTypes {
   GET_PROFILE = '[Profile] Get Profile',
@@ -7,7 +7,7 @@ export enum ActionTypes {
   GET_PROFILE_FAIL = '[Profile] Get Profile Fail',
   UPDATE_PROFILE = '[Profile-Edit] Update Profile',
   UPDATE_PROFILE_SUCCESS = '[Profile-Edit] Update Profile Success',
-  UPDATE_PROFILE_FAIL = '[Profile-Edit] Update Profile Fail',
+  UPDATE_PROFILE_FAIL = '[Profile-Edit] Update Profile Fail'
   // TEST = 'Test',
 }
 
@@ -40,14 +40,14 @@ export class UpdateProfileFail implements Action {
   // constructor(public payload: Response) {}
 }
 
-
-
 // export class Test implements Action {
 //   readonly type = ActionTypes.TEST;
 // }
 
-
 export type ActionsUnion =
-GetProfile | GetProfileSuccess | GetProfileFail |
-UpdateProfile | UpdateProfileSuccess | UpdateProfileFail
-;
+  | GetProfile
+  | GetProfileSuccess
+  | GetProfileFail
+  | UpdateProfile
+  | UpdateProfileSuccess
+  | UpdateProfileFail;

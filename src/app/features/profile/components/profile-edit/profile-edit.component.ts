@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Response } from '../../../../modules/interface/components/profile/profile-data.interface';
+import { Response } from '../../../../modules/interface/components/profile-data.interface';
 import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
 import {
@@ -52,9 +52,9 @@ export class ProfileEditComponent implements OnInit {
   }
 
   onCancel() {
-    this.profileForm.dirty
+    return this.profileForm.dirty
       ? confirm('Are you sure you want to leave without saving changes?') &&
-        this.router.navigate(['/my-profile'])
+          this.router.navigate(['/my-profile'])
       : this.router.navigate(['/my-profile']);
   }
 

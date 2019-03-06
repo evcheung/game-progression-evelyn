@@ -4,16 +4,19 @@ import { CommonModule } from '@angular/common';
 
 import { DataService } from './services/dashboard-data.service';
 
-import { profileReducer } from '../profile/store/profile.reducer';
+import { dashboardReducer } from '../dashboard/store/dashboard.reducer';
 import { StoreModule } from '@ngrx/store';
 import { DashboardComponent } from '../../features/dashboard/dashboard.component';
+import { EffectsModule } from '@ngrx/effects';
+import { DashboardEffects } from './store/dashboard.effects';
 
 @NgModule({
   declarations: [DashboardComponent],
   imports: [
-    CommonModule
+    CommonModule,
     // ProfileRoutingModule,
-    // StoreModule.forFeature('profile', profileReducer),
+    StoreModule.forFeature('dashboard', dashboardReducer),
+    EffectsModule.forFeature([DashboardEffects])
   ],
   exports: [DashboardComponent],
   providers: [DataService]

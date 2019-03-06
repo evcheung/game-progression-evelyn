@@ -3,7 +3,7 @@ import { Store } from '@ngrx/store';
 import { GetProfile } from './../../../../modules/profile/store/profile.actions';
 import { ProfileState } from '../../../../modules/profile/store/profile.reducer';
 import { getProfileDataState } from '../../../../modules/profile/store/profile.selectors';
-import { Response } from '../../../../modules/interface/components/profile/profile-data.interface';
+import { Response } from '../../../../modules/interface/components/profile-data.interface';
 import { Observable } from 'rxjs';
 
 @Component({
