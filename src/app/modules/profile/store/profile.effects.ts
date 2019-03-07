@@ -7,7 +7,6 @@ import { of } from 'rxjs';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { ProfileState } from '../../../../app/modules/profile/store/profile.reducer';
-// import { getProfileDataState } from '../../../../app/modules/profile/store/profile.selectors';
 
 @Injectable()
 export class ProfileEffects {
@@ -45,7 +44,6 @@ export class ProfileEffects {
 
   // TODO: Why does using a state selector and passing it into dataService.updateProfile work?
 
-  //
 
   @Effect()
     updateProfile$ = this.actions$
@@ -54,8 +52,10 @@ export class ProfileEffects {
       map((action: any) => action.payload),
       switchMap((form) => this.dataService.updateProfile(form)
         .pipe(
-          map((data: any) => new ProfileActions.UpdateProfileSuccess(data)),
-          // map(() => this.router.navigate(['/my-profile'])),
+          map((data: any) => {
+            this.router.navigate(['/my-profile']);
+            return new ProfileActions.UpdateProfileSuccess(data);
+          }),
           catchError(error => of(new ProfileActions.UpdateProfileFail()))
         ))
     );
@@ -63,4 +63,3 @@ export class ProfileEffects {
 
 
 // TODO: UpdateProfileSuccess not dispatching before router.navigate, move it elsewhere (like component)
-// TODO: flow of the data? After submitting the update, does the onInit call GetProfile again to update state?

@@ -4,10 +4,7 @@ import { Router } from '@angular/router';
 import { Response } from '../../../../modules/interface/components/profile-data.interface';
 import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
-import {
-  GetProfile,
-  UpdateProfile
-} from './../../../../modules/profile/store/profile.actions';
+import { GetProfile, UpdateProfile } from './../../../../modules/profile/store/profile.actions';
 import { ProfileState } from '../../../../modules/profile/store/profile.reducer';
 import { getProfileDataState } from '../../../../modules/profile/store/profile.selectors';
 
@@ -27,6 +24,7 @@ export class ProfileEditComponent implements OnInit {
 
   onSubmit() {
     if (this.profileForm.valid) {
+      console.log('valid')
       this.store
         .select(getProfileDataState)
         .subscribe(val => (this.profileDataState = val));

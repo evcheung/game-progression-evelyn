@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { map, catchError } from 'rxjs/operators';
 import { environment } from '../../../../environments/environment';
 import { Response } from '../../interface/components/profile-data.interface';
+import { throwError } from 'rxjs';
 @Injectable()
 export class DataService {
   constructor(private http: HttpClient) {}
@@ -21,17 +22,14 @@ export class DataService {
           console.log('GET REQUEST SUCCESS', response);
           return response;
         }),
-        catchError(err => err)
+        catchError(err => throwError(err))
       );
   }
-
-  // updateProfile(profile: {}) {
-  //   return this.http.put<Response>(this.baseUrl + '/profile', profile);
-  // }
 
   // TODO: difference between typing it in paramater vs typecasting?
 
   updateProfile(profile: {}) {
+    console.log('updating');
     return this.http
       .put<Response>(environment.apiUrl + '/profile', profile)
       .pipe(
@@ -39,7 +37,7 @@ export class DataService {
           console.log('PUT REQUEST SUCCESS', response);
           return response;
         }),
-        catchError(err => err)
+        catchError(err => throwError(err))
       );
   }
 }

@@ -8,12 +8,10 @@ export enum ActionTypes {
   UPDATE_PROFILE = '[Profile-Edit] Update Profile',
   UPDATE_PROFILE_SUCCESS = '[Profile-Edit] Update Profile Success',
   UPDATE_PROFILE_FAIL = '[Profile-Edit] Update Profile Fail'
-  // TEST = 'Test',
 }
 
 export class GetProfile implements Action {
   readonly type = ActionTypes.GET_PROFILE;
-  // constructor(public payload: Response) {}
 }
 
 export class GetProfileSuccess implements Action {
@@ -27,7 +25,7 @@ export class GetProfileFail implements Action {
 
 export class UpdateProfile implements Action {
   readonly type = ActionTypes.UPDATE_PROFILE;
-  constructor(public payload: any) {}
+  constructor(public payload: Response) { }
 }
 
 export class UpdateProfileSuccess implements Action {
@@ -37,12 +35,7 @@ export class UpdateProfileSuccess implements Action {
 
 export class UpdateProfileFail implements Action {
   readonly type = ActionTypes.UPDATE_PROFILE_FAIL;
-  // constructor(public payload: Response) {}
 }
-
-// export class Test implements Action {
-//   readonly type = ActionTypes.TEST;
-// }
 
 export type ActionsUnion =
   | GetProfile

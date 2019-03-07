@@ -4,7 +4,6 @@ export interface ProfileState {
   data: Response;
   loading: boolean;
   error: any;
-  // test: number;
 }
 export const initialState = {
   data: {
@@ -16,8 +15,7 @@ export const initialState = {
     languageId: 0
   },
   loading: false,
-  error: null
-  // test: 0,
+  error: null,
 };
 
 export function profileReducer(
@@ -69,16 +67,9 @@ export function profileReducer(
       return {
         ...state,
         loading: false,
-        error: 'Error loading profile'
+        error: 'Error updating profile'
       };
     }
-
-    // case ProfileActions.ActionTypes.TEST: {
-    //   return {
-    //     ...state,
-    //     test: state.test + 1,
-    //   };
-    // }
 
     default: {
       return state;

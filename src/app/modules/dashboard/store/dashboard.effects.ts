@@ -34,7 +34,7 @@ export class DashboardEffects {
           this.store.select(getProfileDataState).subscribe(val => (hours = val.averageNumberOfHoursPerDay));
           // console.log(hours);
 
-          const timeRemaining = (sum / hours).toFixed(2);
+          const timeRemaining = (sum / hours).toFixed(1);
 
 
           ///////// calculating Unfinished Games /////////
@@ -48,9 +48,7 @@ export class DashboardEffects {
 
           // console.log(hoursPlayed, hoursTotal);
 
-          const incompletePercentage = (
-            (1 - hoursPlayed / hoursTotal) * 100
-          ).toFixed(2);
+          const incompletePercentage = ((1 - hoursPlayed / hoursTotal) * 100).toFixed(2);
 
 
           ///////// calculating Finished Games /////////
