@@ -1,0 +1,45 @@
+@import '../../../sass/variables';
+
+.games_container--header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 12px;
+  background: $mediumColor;
+  color: $textOnDark;
+  border-radius: 0.4rem;
+}
+
+.games_container--header h2 {
+  font-size: 1rem;
+}
+
+.games_container--info h3 {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
+
+.games_container--info {
+  padding: 12px;
+  background: $mediumColor;
+  color: $textOnDark;
+  border-radius: 0.4rem;
+  margin-top: 12px;
+  font-size: 0.8rem;
+}
+
+.games_container--info div:not(:last-child) {
+  margin-bottom: 12px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 10px;
+  grid-auto-rows: auto;
+}
+
+.games_container--card {
+  border-left: 5px solid yellowgreen;
+  padding: 10px 0px;
+}

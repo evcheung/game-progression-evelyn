@@ -22,7 +22,10 @@ export class DashboardEffects {
     switchMap(() =>
       this.dataService.getGames().pipe(
         map((data: any) => {
-          console.log('games data GET success', data);
+          console.log('[dashboard] GET success', data);
+
+          // TODO: move this out into a transformation file that does everything and reutrns an object to put into state
+          // pass the payload to it
 
           ///////// calculating Time Remaining /////////
           const sum = data.reduce((total, next) => {

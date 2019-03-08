@@ -5,24 +5,25 @@ import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-// import { environment } from '../environments/environment'; // Angular CLI environemnt
 
 // Components
 import { AppComponent } from './app.component';
 import { AppHeaderComponent } from './root/components/app-header/app-header.component';
 import { AppNavComponent } from './root/components/app-nav/app-nav.component';
 import { FooterComponent } from './root/components/footer/footer.component';
-import { GamesComponent } from './features/games/games.component';
 import { BodyComponent } from './root/components/body/body.component';
 
 // Feature Modules
 import { ProfileModule } from './modules/profile/profile.module';
 import { DashboardModule } from './modules/dashboard/dashboard.module';
+import { GamesModule } from './modules/games/games.module';
+
 // ngRx
-// import { profileReducer } from './modules/profile/store/profile.reducer';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { ProfileEffects } from '../app/modules/profile/store/profile.effects';
+
+
 // summarize all components into index.ts file and export all, then import in the [component]module.ts),
 // modules (services go in with the features/modules),
 // root (root feature)
@@ -38,9 +39,8 @@ import { ProfileEffects } from '../app/modules/profile/store/profile.effects';
     AppComponent,
     AppHeaderComponent,
     AppNavComponent,
+    BodyComponent,
     FooterComponent,
-    GamesComponent,
-    BodyComponent
   ],
   imports: [
     BrowserModule,
@@ -49,6 +49,7 @@ import { ProfileEffects } from '../app/modules/profile/store/profile.effects';
     FormsModule,
     ProfileModule,
     DashboardModule,
+    GamesModule,
     StoreModule.forRoot({}),
     StoreDevtoolsModule.instrument({
       maxAge: 25,

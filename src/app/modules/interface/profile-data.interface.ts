@@ -6,3 +6,5 @@ export interface Response {
   languageId: number;
   averageNumberOfHoursPerDay: number;
 }
+
+// TODO: Rename, move out to root

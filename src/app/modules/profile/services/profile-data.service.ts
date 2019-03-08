@@ -21,23 +21,21 @@ export class DataService {
         map(response => {
           console.log('GET REQUEST SUCCESS', response);
           return response;
-        }),
-        catchError(err => throwError(err))
+        })
       );
   }
 
   // TODO: difference between typing it in paramater vs typecasting?
 
   updateProfile(profile: {}) {
-    console.log('updating');
+    // console.log('updating');
     return this.http
       .put<Response>(environment.apiUrl + '/profile', profile)
       .pipe(
         map(response => {
           console.log('PUT REQUEST SUCCESS', response);
           return response;
-        }),
-        catchError(err => throwError(err))
+        })
       );
   }
 }

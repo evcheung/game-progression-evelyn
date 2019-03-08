@@ -7,7 +7,7 @@ import { of } from 'rxjs';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { ProfileState } from '../../../../app/modules/profile/store/profile.reducer';
-
+import { Response } from '../../interface/components/profile-data.interface';
 @Injectable()
 export class ProfileEffects {
   constructor(private actions$: Actions, private router: Router, private dataService: DataService, private store: Store<ProfileState>) {}
@@ -20,9 +20,8 @@ export class ProfileEffects {
       ofType(ProfileActions.ActionTypes.GET_PROFILE),
       switchMap(() => this.dataService.getProfile()
         .pipe(
-          map((data: any) => new ProfileActions.GetProfileSuccess(data)),
+          map((data: Response) => new ProfileActions.GetProfileSuccess(data)),
           catchError(error => of(new ProfileActions.GetProfileFail()))
-          // TODO: find out why error action not dispatching
         ))
     );
 
@@ -52,7 +51,7 @@ export class ProfileEffects {
       map((action: any) => action.payload),
       switchMap((form) => this.dataService.updateProfile(form)
         .pipe(
-          map((data: any) => {
+          map((data: Response) => {
             this.router.navigate(['/my-profile']);
             return new ProfileActions.UpdateProfileSuccess(data);
           }),

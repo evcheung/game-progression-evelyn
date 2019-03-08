@@ -24,7 +24,6 @@ export class ProfileEditComponent implements OnInit {
 
   onSubmit() {
     if (this.profileForm.valid) {
-      console.log('valid')
       this.store
         .select(getProfileDataState)
         .subscribe(val => (this.profileDataState = val));

@@ -1,7 +1,7 @@
 import * as DashboardActions from './dashboard.actions';
 export interface DashboardState {
-  incompleteGames: {};
   gameStats: {
+    // make into interface since it is core data
     timeRemaining: number;
     incompletePercentage: number;
     numberCompleted: number;
