@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map, catchError } from 'rxjs/operators';
 import { environment } from '../../../../environments/environment';
-import { Response } from '../../interface/components/profile-data.interface';
+import { Response } from '../../interface/profile-data.interface';
 import { throwError } from 'rxjs';
 @Injectable()
 export class DataService {

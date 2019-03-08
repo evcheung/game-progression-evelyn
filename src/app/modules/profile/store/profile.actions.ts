@@ -1,5 +1,5 @@
 import { Action } from '@ngrx/store';
-import { Response } from '../../interface/components/profile-data.interface';
+import { Response } from '../../interface/profile-data.interface';
 
 export enum ActionTypes {
   GET_PROFILE = '[Profile] Get Profile',
