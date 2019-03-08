@@ -5,19 +5,23 @@ import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-// import { environment } from '../environments/environment'; // Angular CLI environemnt
 
 // Components
 import { AppComponent } from './app.component';
 import { AppHeaderComponent } from './root/components/app-header/app-header.component';
 import { AppNavComponent } from './root/components/app-nav/app-nav.component';
 import { FooterComponent } from './root/components/footer/footer.component';
-import { DashboardComponent } from './features/dashboard/dashboard.component';
-import { GamesComponent } from './features/games/games.component';
 import { BodyComponent } from './root/components/body/body.component';
 
 // Feature Modules
 import { ProfileModule } from './modules/profile/profile.module';
+import { DashboardModule } from './modules/dashboard/dashboard.module';
+import { GamesModule } from './modules/games/games.module';
+
+// ngRx
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { ProfileEffects } from '../app/modules/profile/store/profile.effects';
 
 
 // summarize all components into index.ts file and export all, then import in the [component]module.ts),
@@ -35,10 +39,8 @@ import { ProfileModule } from './modules/profile/profile.module';
     AppComponent,
     AppHeaderComponent,
     AppNavComponent,
-    FooterComponent,
-    DashboardComponent,
-    GamesComponent,
     BodyComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
@@ -46,7 +48,9 @@ import { ProfileModule } from './modules/profile/profile.module';
     HttpClientModule,
     FormsModule,
     ProfileModule,
-    // StoreModule.forRoot(reducers),
+    DashboardModule,
+    GamesModule,
+    StoreModule.forRoot({}),
     StoreDevtoolsModule.instrument({
       maxAge: 25,
       logOnly: false,
@@ -55,9 +59,10 @@ import { ProfileModule } from './modules/profile/profile.module';
         lock: true,
         persist: true
       }
-    })
+    }),
+    EffectsModule.forRoot([ProfileEffects])
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

@@ -5,7 +5,7 @@
       <a routerLink="/my-profile/edit"><button>Edit</button></a>
     </div>
 
-    <div class="profile_container--info">
+    <div *ngIf="(profile$ | async) as profile" class="profile_container--info">
       <div>
         <p><strong>Name:</strong></p>
         <p>{{ profile.firstName }} {{ profile.lastName }}</p>

@@ -1,0 +1,59 @@
+@import '../../../sass/variables';
+
+.dashboard_container--header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 12px;
+  background: $mediumColor;
+  color: $textOnDark;
+  border-radius: 0.4rem;
+}
+
+.dashboard_container--header h2 {
+  font-size: 1rem;
+}
+
+.dashboard_container--info h3 {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
+
+.dashboard_container--info {
+  padding: 12px;
+  background: $mediumColor;
+  color: $textOnDark;
+  border-radius: 0.4rem;
+  margin-top: 12px;
+  font-size: 0.8rem;
+}
+
+.dashboard_container--info div:not(:last-child) {
+  margin-bottom: 12px;
+}
+
+.fullPercentageBar--red {
+  width: 100%;
+  height: 24px;
+  background: #c28d8d;
+}
+
+.fullPercentageBar--green {
+  width: 100%;
+  height: 24px;
+  background: #9ec77c;
+}
+
+.progressPercentageBar--red {
+  height: 24px;
+  background:#ab3737;
+}
+
+.progressPercentageBar--green {
+height: 24px;
+background: #6bab37;
+}
+
+.percentageBar_container p {
+  margin-bottom: 6px;
+}

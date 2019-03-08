@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { DataService } from '../../../../modules/profile/services/profile-data.service';
+import { Store } from '@ngrx/store';
+import { GetProfile } from './../../../../modules/profile/store/profile.actions';
+import { ProfileState } from '../../../../modules/profile/store/profile.reducer';
+import { getProfileDataState } from '../../../../modules/profile/store/profile.selectors';
+import { Response } from '../../../../modules/interface/profile-data.interface';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-profile',
@@ -7,17 +12,9 @@ import { DataService } from '../../../../modules/profile/services/profile-data.s
   styleUrls: ['./profile.component.scss']
 })
 export class ProfileComponent implements OnInit {
+  profile$: Observable<Response>;
 
-
-  profile = {
-    // firstName: '',
-    // lastName: '',
-    // image: '',
-    // averageNumberOfHoursPerDay: 0,
-  };
-
-  constructor(private dataService: DataService) {
-
+  constructor(private store: Store<ProfileState>) {
     // this.dataService.getProfile()
     //   .subscribe(
     //     response => {
@@ -26,15 +23,25 @@ export class ProfileComponent implements OnInit {
     //     },
     //     error => console.log(error)
     //   );
-
-    this.dataService.getProfile()
-      .subscribe({
-        next: data => { this.profile = data; },
-        error: err => { console.log('Error getting profile.', err); }
-      });
+    // this.dataService.getProfile()
+    //   .subscribe({
+    //     next: data => { this.profile = data; },
+    //     error: err => { console.log('Error getting profile.', err); }
+    //   });
+    // this.testing = store.select('profile');
   }
+
+  // test() {
+  //   this.store.dispatch(new Test());
+  // }
 
   ngOnInit() {
-  }
+    this.store.dispatch(new GetProfile());
+    this.profile$ = this.store.select(getProfileDataState);
 
+    // 2 days to do the selector/rendering state into components
+    // Can do a subscribe to the profiles$ observable here
+    // or do async piping in html which will subscribe to the observable too and unwrap it
+    // BUT you will need to rename the observable for it to work in
+  }
 }

@@ -1,57 +1,62 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { DataService } from '../../../../modules/profile/services/profile-data.service';
 import { NgForm } from '@angular/forms';
-import {Router} from '@angular/router';
+import { Router } from '@angular/router';
+import { Response } from '../../../../modules/interface/components/profile-data.interface';
+import { Observable } from 'rxjs';
+import { Store } from '@ngrx/store';
+import { GetProfile, UpdateProfile } from './../../../../modules/profile/store/profile.actions';
+import { ProfileState } from '../../../../modules/profile/store/profile.reducer';
+import { getProfileDataState } from '../../../../modules/profile/store/profile.selectors';
+
 @Component({
   selector: 'app-profile-edit',
   templateUrl: './profile-edit.component.html',
   styleUrls: ['./profile-edit.component.scss']
 })
-
 export class ProfileEditComponent implements OnInit {
-
-  // TODO: bad to keep repeating this object instantiation? But every component may use different items
-  profile = {
-    id: 0,
-    firstName: '',
-    lastName: '',
-    image: '',
-    averageNumberOfHoursPerDay: 0,
-    languageId: 0
-  };
-
-  aboveZero = false;
+  profile$: Observable<Response>;
+  profileDataState: Response;
 
   // TODO: learn more about ViewChild
   @ViewChild('f') profileForm: NgForm;
 
-  constructor(private dataService: DataService, private router: Router) {
-
-    this.dataService.getProfile()
-      .subscribe({
-        next: data => { this.profile = data; },
-        error: err => { console.log('Error getting profile.', err); }
-      });
-  }
+  constructor(private router: Router, private store: Store<ProfileState>) {}
 
   onSubmit() {
-    this.dataService.updateProfile(this.profile)
-      .subscribe({
-        next: data => {
-          this.profile = data;
-          this.router.navigate(['/my-profile']);
-        },
-        error: err => { console.log('Error getting profile.', err); }
-      });
+    if (this.profileForm.valid) {
+      this.store
+        .select(getProfileDataState)
+        .subscribe(val => (this.profileDataState = val));
+
+      const formValues = {
+        ...this.profileDataState,
+        ...this.profileForm.form.value
+      };
+
+      this.store.dispatch(new UpdateProfile(formValues));
+    } else {
+      alert('Invalid form');
+    }
+
+    // this.dataService.updateProfile(this.profile$)
+    // .subscribe({
+    //   next: data => {
+    //     this.profile$ = data;
+    //     this.router.navigate(['/my-profile']);
+    //   },
+    //   error: err => { console.log('Error getting profile.', err); }
+    // });
   }
 
   onCancel() {
-    this.profileForm.dirty
-    ? confirm('Are you sure you want to leave without saving changes?') && this.router.navigate(['/my-profile'])
-    : this.router.navigate(['/my-profile']);
+    return this.profileForm.dirty
+      ? confirm('Are you sure you want to leave without saving changes?') &&
+          this.router.navigate(['/my-profile'])
+      : this.router.navigate(['/my-profile']);
   }
 
   ngOnInit() {
+    this.store.dispatch(new GetProfile());
+    this.profile$ = this.store.select(getProfileDataState);
   }
-
 }

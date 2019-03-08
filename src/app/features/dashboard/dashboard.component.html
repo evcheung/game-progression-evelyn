@@ -1,3 +1,33 @@
-<p>
-  dashboard works!
-</p>
+<div id="dashboard-body">
+  <div class="dashboard_container wrapper">
+    <div class="dashboard_container--header">
+      <h2>Your Dashboard</h2>
+    </div>
+
+    <div *ngIf="(dashboard$ | async) as dashboard" class="dashboard_container--info">
+      <div>
+        <h3>Time Remaining: {{ dashboard.timeRemaining }} Days</h3>
+      </div>
+
+      <div class="percentageBar_container">
+        <p><strong>Percentage Unfinished: </strong>{{ dashboard.incompletePercentage}}%</p>
+        <div class="fullPercentageBar--red">
+          <div
+            class="progressPercentageBar--red"
+            [style.width]="dashboard.incompletePercentage + '%'"
+          ></div>
+        </div>
+      </div>
+
+      <div class="percentageBar_container">
+        <p><strong>Number of Finished Games: </strong>{{ dashboard.numberCompleted }}</p>
+        <div class="fullPercentageBar--green">
+          <div
+            class="progressPercentageBar--green"
+            [style.width]="dashboard.completedPercentage + '%'"
+          ></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
