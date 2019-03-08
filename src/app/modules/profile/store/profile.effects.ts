@@ -7,7 +7,7 @@ import { of } from 'rxjs';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { ProfileState } from '../../../../app/modules/profile/store/profile.reducer';
-import { Response } from '../../interface/components/profile-data.interface';
+import { Response } from '../../interface/profile-data.interface';
 @Injectable()
 export class ProfileEffects {
   constructor(private actions$: Actions, private router: Router, private dataService: DataService, private store: Store<ProfileState>) {}

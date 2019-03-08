@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map, catchError } from 'rxjs/operators';
 import { environment } from '../../../../environments/environment';
-import { GamesResponse } from '../../interface/components/dashboard-data.interface';
+import { GamesResponse } from '../../interface/dashboard-data.interface';
 import { throwError } from 'rxjs';
 
 
