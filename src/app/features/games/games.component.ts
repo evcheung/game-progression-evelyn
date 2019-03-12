@@ -18,7 +18,8 @@ export class GamesComponent implements OnInit {
   ngOnInit() {
     this.store.dispatch(new GetGames());
     this.games$ = this.store.select(getGamesDataState);
-    this.store.select(getGamesDataState).subscribe(val => console.log(val))
+    // this.store.select(getGamesDataState).subscribe(val => console.log(val))
+
   }
 
 }

@@ -1,7 +1,29 @@
+@import '../../../../sass/variables';
+
 .games_card {
   display: flex;
   justify-content: space-between;
   height: 100%;
+  padding: 10px 10px;
+  background: $mediumColor;
+  color: $textOnDark;
+  font-size: 0.8rem;
+}
+
+.games_card p {
+  line-height: 1.5;
+}
+
+.green {
+  border-left: 8px solid yellowgreen;
+}
+
+.red {
+  border-left: 8px solid red;
+}
+
+.orange {
+  border-left: 8px solid orange;
 }
 
 .games_card--info {
@@ -10,8 +32,17 @@
   justify-content: space-between;
 }
 
+.games_card--info h3 {
+  font-size: 1.2rem;
+  padding-right: 10px;
+}
+
 .image {
-  max-width: 50px;
+  width: 50px;
   height: auto;
   align-self: start;
+}
+
+.faded_text {
+  opacity: .7;
 }

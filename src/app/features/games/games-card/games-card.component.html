@@ -1,9 +1,12 @@
-<div class="games_card">
+<div class="games_card"
+[ngClass]="game.percentCompleted == 0
+? 'red' : game.percentCompleted < 100
+? 'orange' : 'green' ">
   <div class="games_card--info">
-    <h3>{{game.name}}</h3>
-    <p>{{ game.platformId }}</p>
-    <p><strong>Est. % Completed:</strong></p>
-    <p><strong>Est. Completion Date:</strong></p>
+    <h3>{{ game.name }}</h3>
+    <p class="faded_text">{{ game.platform }}</p>
+    <p>Est. % Completed: <span class="faded_text">{{ game.percentCompleted }}%</span></p>
+    <p>Est. Completion Date: <span class="faded_text">{{ game.completionDate }}</span></p>
   </div>
   <img src="{{ game.image }}" class="image" alt="">
 </div>

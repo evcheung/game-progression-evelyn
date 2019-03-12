@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { map, catchError } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import { environment } from '../../../../environments/environment';
 import { GamesResponse } from '../../interface/dashboard-data.interface';
-import { throwError } from 'rxjs';
 
 
 // TODO: archiectural question
@@ -15,8 +14,13 @@ export class DataService {
 
   getGames() {
     return this.http.get<GamesResponse>(environment.apiUrl + '/games').pipe(
-      map(response => response),
-      catchError(err => throwError(err))
+      map(response => response)
+    );
+  }
+
+  getPlatforms() {
+    return this.http.get<any>(environment.apiUrl + '/platforms').pipe(
+      map(response => response)
     );
   }
 }

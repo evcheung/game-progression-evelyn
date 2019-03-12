@@ -4,9 +4,9 @@ export enum ActionTypes {
   GET_GAMES = '[Games] Get Games',
   GET_GAMES_SUCCESS = '[Games] Get Games Success',
   GET_GAMES_FAIL = '[Games] Get Games Fail',
-  GET_PLATFORMS = '[Games] Get Games',
-  GET_PLATFORMS_SUCCESS = '[Games] Get Games Success',
-  GET_PLATFORMS_FAIL = '[Games] Get Games Fail'
+  GET_PLATFORMS = '[Games] Get Platforms',
+  GET_PLATFORMS_SUCCESS = '[Games] Get Platforms Success',
+  GET_PLATFORMS_FAIL = '[Games] Get Platforms Fail'
 }
 export class GetGames implements Action {
   readonly type = ActionTypes.GET_GAMES;
