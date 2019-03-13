@@ -13,7 +13,7 @@ export class HoursValidatorDirective implements Validator {
   validate(control: AbstractControl) {
     const elementValue = control.value;
 
-    // TODO: how exactly is this working?
+    // TODO: research validators more, how exactly is this working?
     if (elementValue < 0) {
       return {error_belowZero : 'Hours must be above or equal to 0.'};
     } else {

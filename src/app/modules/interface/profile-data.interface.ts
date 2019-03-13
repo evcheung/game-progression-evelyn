@@ -1,4 +1,4 @@
-export interface Response {
+export interface ProfileResponse {
   id: number;
   firstName: string;
   lastName: string;
@@ -7,4 +7,4 @@ export interface Response {
   averageNumberOfHoursPerDay: number;
 }
 
-// TODO: Rename, move out to root
+// TODO: move out to root

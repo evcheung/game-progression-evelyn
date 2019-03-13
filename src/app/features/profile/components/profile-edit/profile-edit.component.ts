@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Response } from '../../../../modules/interface/profile-data.interface';
+import { ProfileResponse } from '../../../../modules/interface/profile-data.interface';
 import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { GetProfile, UpdateProfile } from './../../../../modules/profile/store/profile.actions';
@@ -14,8 +14,8 @@ import { getProfileDataState } from '../../../../modules/profile/store/profile.s
   styleUrls: ['./profile-edit.component.scss']
 })
 export class ProfileEditComponent implements OnInit {
-  profile$: Observable<Response>;
-  profileDataState: Response;
+  profile$: Observable<ProfileResponse>;
+  profileDataState: ProfileResponse;
 
   // TODO: learn more about ViewChild
   @ViewChild('f') profileForm: NgForm;

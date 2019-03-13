@@ -2,7 +2,6 @@ import * as GamesActions from './games.actions';
 
 export interface GamesState {
   data: [];
-  // TODO: make games interface
   platforms: [];
   loading: boolean;
   error: any;
@@ -53,6 +52,30 @@ export function gamesReducer(
         ...state,
         loading: false,
         error: 'Error loading games'
+      };
+    }
+
+    case GamesActions.ActionTypes.UPDATE_GAME: {
+      return {
+        ...state,
+        loading: true,
+        error: null
+      };
+    }
+
+    case GamesActions.ActionTypes.UPDATE_GAME_SUCCESS: {
+      return {
+        ...state,
+        data: action.payload,
+        loading: false
+      };
+    }
+
+    case GamesActions.ActionTypes.UPDATE_GAME_FAIL: {
+      return {
+        ...state,
+        loading: false,
+        error: 'Error updating game'
       };
     }
 

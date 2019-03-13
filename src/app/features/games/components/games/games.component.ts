@@ -15,7 +15,6 @@ export class GamesComponent implements OnInit {
   games$: Observable<any>;
 
   gamesState;
-  games;
   noGames = false;
 
   constructor(private store: Store<GamesState>) { }

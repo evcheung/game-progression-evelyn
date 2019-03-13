@@ -70,7 +70,6 @@ export class DashboardEffects {
           return new DashboardActions.GetGamesSuccess(gamesStats);
         }),
         catchError(error => of(new DashboardActions.GetGamesFail()))
-        // TODO: find out why error action not dispatching
       )
     )
   );

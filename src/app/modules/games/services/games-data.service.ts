@@ -18,6 +18,12 @@ export class DataService {
     );
   }
 
+  updateGame(game: {}, id: number) {
+    return this.http.put<any>(environment.apiUrl + '/games/' + id, game).pipe(
+      map(response => response)
+    );
+  }
+
   getPlatforms() {
     return this.http.get<any>(environment.apiUrl + '/platforms').pipe(
       map(response => response)

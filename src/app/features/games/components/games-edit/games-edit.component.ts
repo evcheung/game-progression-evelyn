@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { Observable, of } from 'rxjs';
 import { Store } from '@ngrx/store';
-import { GetGames, GetPlatforms } from '../../../../modules/games/store/games.actions';
+import { GetGames, GetPlatforms, UpdateGame } from '../../../../modules/games/store/games.actions';
 import { getGamesDataState, getPlatformsDataState } from '../../../../modules/games/store/games.selectors';
 import { GamesState } from '../../../../modules/games/store/games.reducer';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
@@ -33,7 +33,7 @@ export class GamesEditComponent implements OnInit {
   //   priority: 8,
   // }];
 
-  selectedGame: [{}];
+  selectedGame: {};
 
   gameForm: FormGroup;
 
@@ -41,23 +41,31 @@ export class GamesEditComponent implements OnInit {
 
   getGame() {
     const id = +this.route.snapshot.paramMap.get('id');
-    this.games$.subscribe(val => {
-      this.selectedGame = val.filter(x => x.id === id);
+    this.games$.subscribe((val: []) => {
+      this.selectedGame = val.filter(x => x.id === id)[0];
     });
     console.log('selected game', this.selectedGame);
   }
 
   onSubmit() {
-    console.log('submitting')
     if (this.gameForm.valid) {
-      const formValues = {
-        ...this.selectedGame[0],
-        ...this.gameForm.value
+
+      const allGameValues = {
+        ...this.selectedGame,
+        ...this.gameForm.value,
+        platformId: this.platforms.filter(x => x.name === this.gameForm.value.platform)[0].id
       };
 
-      console.log('form values', formValues)
+      const {
+        platform,
+        percentCompleted,
+        completionDate,
+        ...newGameObject } = allGameValues;
 
-      // this.store.dispatch(new UpdateGame(formValues));
+
+      // console.log('form values', newGameObject);
+
+      this.store.dispatch(new UpdateGame(newGameObject));
     } else {
       alert('Invalid form');
     }
@@ -75,15 +83,14 @@ export class GamesEditComponent implements OnInit {
 
     // TODO: is this good architecture? Getting platforms here?
 
-
     this.gameForm = new FormGroup({
-      name: new FormControl(this.selectedGame[0].name, [Validators.required, Validators.pattern('[a-zA-Z ]*')]),
-      image: new FormControl(this.selectedGame[0].image, Validators.required),
-      platform: new FormControl(this.selectedGame[0].platform, Validators.required),
-      numberOfHoursToComplete: new FormControl(this.selectedGame[0].numberOfHoursToComplete, [Validators.required, aboveZeroValidator()]),
-      priority: new FormControl(this.selectedGame[0].priority, Validators.required),
-      numberOfHoursPlayed: new FormControl(this.selectedGame[0].numberOfHoursPlayed, [Validators.required, aboveEqualZeroValidator()]),
-      isComplete: new FormControl(this.selectedGame[0].isComplete),
+      name: new FormControl(this.selectedGame.name, Validators.required),
+      image: new FormControl(this.selectedGame.image, Validators.required),
+      platform: new FormControl(this.selectedGame.platform, Validators.required),
+      numberOfHoursToComplete: new FormControl(this.selectedGame.numberOfHoursToComplete, [Validators.required, aboveZeroValidator()]),
+      priority: new FormControl(this.selectedGame.priority, Validators.required),
+      numberOfHoursPlayed: new FormControl(this.selectedGame.numberOfHoursPlayed, [Validators.required, aboveEqualZeroValidator()]),
+      isComplete: new FormControl(this.selectedGame.isComplete),
     });
   }
 
