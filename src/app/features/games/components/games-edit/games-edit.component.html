@@ -1,0 +1,80 @@
+<div id="games-edit-body">
+  <div class="games-edit_container wrapper">
+    <form id="gameForm" [formGroup]="gameForm" (ngSubmit)="onSubmit()">
+      <div class="games-edit_container--header">
+        <h2>Edit Game</h2>
+        <div class="buttonContainer">
+          <a><button id="saveButton" type="submit" [disabled]="!gameForm.valid">
+              Save
+          </button></a>
+          <a><button id="deleteButton" type="button">
+            Delete
+          </button></a>
+          <a routerLink="/games"><button id="cancelButton" type="button" >
+            Cancel
+          </button></a>
+        </div>
+      </div>
+
+      <div class="games-edit_container--info">
+        <div class="form-group">
+          <label for="name"><strong>Name</strong></label>
+          <input type="text" id="name" formControlName="name" />
+          <p *ngIf="!gameForm.get('name').valid && gameForm.get('name').touched">
+            Please enter a valid name.
+          </p>
+        </div>
+
+
+        <div class="form-group">
+          <label for="image"><strong>Image URL</strong></label>
+          <input type="text" id="image" formControlName="image" />
+          <p *ngIf="!gameForm.get('image').valid && gameForm.get('image').touched">Please enter a valid URL.</p>
+        </div>
+
+        <div class="form-group">
+          <label for="platform"><strong>Platform</strong></label>
+          <select name="platform" form="gameForm" id="platform" formControlName="platform">
+            <option *ngFor="let platform of platforms" value="{{ platform.name }}">{{ platform.name }}</option>
+          </select>
+          <p *ngIf="!gameForm.get('platform').valid && gameForm.get('platform').touched">Please choose a platform.</p>
+        </div>
+
+        <div class="form-group">
+          <label for="numberOfHoursToComplete"><strong>Number of Hours to Complete</strong></label>
+          <input type="number" id="numberOfHoursToComplete"
+            formControlName="numberOfHoursToComplete" />
+          <p *ngIf="!gameForm.get('numberOfHoursToComplete').valid && gameForm.get('numberOfHoursToComplete').touched">
+            Hours must be above 0.
+          </p>
+        </div>
+
+        <div class="form-group">
+          <label for="priority"><strong>Priority</strong></label>
+          <select name="priority" form="gameForm" id="priority" formControlName="priority">
+            <option *ngFor="let number of [1,2,3,4,5,6,7,8,9,10]" value="{{ number }}">{{ number }}</option>
+          </select>
+          <p *ngIf="!gameForm.get('priority').valid && gameForm.get('priority').touched">
+            Hours must be above or equal to 0.
+          </p>
+        </div>
+
+        <div class="form-group">
+          <label for="numberOfHoursPlayed"><strong>Hours Played</strong></label>
+          <input type="number" id="numberOfHoursPlayed"
+            formControlName="numberOfHoursPlayed" />
+          <p *ngIf="!gameForm.get('numberOfHoursPlayed').valid && gameForm.get('numberOfHoursPlayed').touched">
+            Hours must be above or equal to 0.
+          </p>
+        </div>
+
+
+        <div class="form-group">
+          <label for="isComplete"><strong>Completed</strong></label>
+          <input type="checkbox" id="isComplete" formControlName="isComplete" />
+          <p *ngIf="!gameForm.get('isComplete').valid && gameForm.get('isComplete').touched">Please enter a valid URL.</p>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

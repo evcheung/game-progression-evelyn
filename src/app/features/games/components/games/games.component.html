@@ -1,0 +1,21 @@
+<div id="games-body">
+  <div class="games_container wrapper">
+    <div class="games_container--header">
+      <h2>Games Owned</h2>
+      <a routerLink=""><button>Add Game</button></a>
+    </div>
+
+    <div [ngSwitch]="noGames">
+        <div class="games_container--info grid" *ngSwitchDefault>
+          <div class="games_container--card" *ngFor="let game of games$ | async">
+            <app-games-card [game]="game"></app-games-card>
+          </div>
+        </div>
+        <div *ngSwitchCase="true">
+          <div class="no_games">
+            There are no games in the catalog.
+          </div>
+        </div>
+    </div>
+  </div>
+</div>

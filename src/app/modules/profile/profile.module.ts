@@ -25,6 +25,7 @@ import { StoreModule } from '@ngrx/store';
     CommonModule,
     FormsModule,
     ProfileRoutingModule,
+    // TODO: how does this work even though routing file is empty?
     StoreModule.forFeature('profile', profileReducer),
   ],
   exports: [

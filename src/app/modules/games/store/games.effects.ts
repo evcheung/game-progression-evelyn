@@ -32,22 +32,25 @@ export class GamesEffects {
               })
             );
         }),
+        // TODO: error happens when only platformId is missing from games data (no error if anything else missing)
+        // Could be a case where games data may be incomplete, but app should still render
+        // Find a way to accomodate this case
         catchError(error => of(new GamesActions.GetGamesFail()))
       ))
     );
 
+    @Effect()
+    loadPlatforms = this.actions$
+      .pipe(
+        ofType(GamesActions.ActionTypes.GET_PLATFORMS),
+        switchMap(() => this.dataService.getPlatforms()
+          .pipe(
+            map((data: Response) => new GamesActions.GetPlatformsSuccess(data)),
+            catchError(error => of(new GamesActions.GetPlatformsFail()))
+          ))
+      );
+
+
     // TODO: type the data
-  @Effect()
-  loadPlatforms$ = this.actions$
-    .pipe(
-      ofType(GamesActions.ActionTypes.GET_PLATFORMS),
-      switchMap(() => this.dataService.getPlatforms()
-        .pipe(
-          map((data: any) => {
-            console.log('[games] GET platforms success', data);
-            return new GamesActions.GetPlatformsSuccess(data);
-          }),
-          catchError(error => of(new GamesActions.GetPlatformsFail()))
-        ))
-    );
+
 }

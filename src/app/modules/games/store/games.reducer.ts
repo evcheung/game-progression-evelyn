@@ -1,19 +1,28 @@
 import * as GamesActions from './games.actions';
 
 export interface GamesState {
-  data: {};
+  data: [];
   // TODO: make games interface
-  platforms: {};
+  platforms: [];
   loading: boolean;
   error: any;
 }
 export const initialState = {
-  // gameStats: {
-  //   timeRemaining: 0,
-  //   incompletePercentage: 0,
-  //   numberCompleted: 0,
-  //   completedPercentage: 0,
-  // },
+  data: [{
+    completionDate: '',
+    dateCreated: '',
+    id: 0,
+    image: '',
+    isComplete: false,
+    name: '',
+    numberOfHoursPlayed: 0,
+    numberOfHoursToComplete: 0,
+    percentCompleted: '',
+    platform: '',
+    platformId: 0,
+    priority: 0,
+  }],
+  platforms: [],
   loading: false,
   error: null
 };

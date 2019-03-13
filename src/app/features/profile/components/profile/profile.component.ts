@@ -39,7 +39,7 @@ export class ProfileComponent implements OnInit {
     this.store.dispatch(new GetProfile());
     this.profile$ = this.store.select(getProfileDataState);
 
-    // 2 days to do the selector/rendering state into components
+    // 2 ways to do the selector/rendering state into components
     // Can do a subscribe to the profiles$ observable here
     // or do async piping in html which will subscribe to the observable too and unwrap it
     // BUT you will need to rename the observable for it to work in

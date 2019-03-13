@@ -1,0 +1,84 @@
+@import '../../../../../sass/variables';
+
+.games-edit_container--header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 12px;
+  background: $mediumColor;
+  color: $textOnDark;
+  border-radius: 0.4rem;
+}
+
+.games-edit_container--header h2 {
+  font-size: 1rem;
+}
+
+.games-edit_container--header button {
+  padding: 6px 46px;
+  text-transform: uppercase;
+  border-radius: 0.25rem;
+  border: none;
+  background: $lightColor;
+  color: $textOnWhite;
+  cursor: pointer;
+}
+
+.games-edit_container--info {
+  padding: 12px;
+  background: $mediumColor;
+  color: $textOnDark;
+  border-radius: 0.4rem;
+  margin-top: 12px;
+  font-size: 0.8rem;
+}
+
+.games-edit_container--info input {
+  width: 16rem;
+  margin-top: 4px;
+  background: #d0d6da;
+  border: none;
+  box-shadow: none;
+  padding: 4px;
+  color: $placeholderText;
+}
+
+.games-edit_container--info label {
+  display: block;
+}
+
+.games-edit_container--info div:not(:last-child) {
+  margin-bottom: 12px;
+}
+
+#saveButton {
+  background:#6bab37;
+  margin-right: 6px;
+}
+
+#deleteButton {
+  background:#ab3737;
+  color: $textOnDark;
+  margin-right: 6px;
+}
+
+#saveButton:disabled,
+#saveButton[disabled]{
+  background:#97be77;
+  color: #647554c7;
+  cursor: not-allowed;
+}
+
+.form-group > input.ng-invalid.ng-touched {
+  border: 1px solid rgba(241, 65, 65, 0.884);
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+#platform option {
+  color: black;
+}
