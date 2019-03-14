@@ -1,5 +1,5 @@
 import * as ProfileActions from './profile.actions';
-import { ProfileResponse } from '../../interface/profile-data.interface';
+import { ProfileResponse } from '../../../interface/profile-data.interface';
 export interface ProfileState {
   data: ProfileResponse;
   loading: boolean;

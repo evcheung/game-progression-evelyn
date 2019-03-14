@@ -3,7 +3,7 @@ import { Store } from '@ngrx/store';
 import { GetProfile } from './../../../../modules/profile/store/profile.actions';
 import { ProfileState } from '../../../../modules/profile/store/profile.reducer';
 import { getProfileDataState } from '../../../../modules/profile/store/profile.selectors';
-import { ProfileResponse } from '../../../../modules/interface/profile-data.interface';
+import { ProfileResponse } from '../../../../interface/profile-data.interface';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -12,7 +12,7 @@ import { Observable } from 'rxjs';
   styleUrls: ['./profile.component.scss']
 })
 export class ProfileComponent implements OnInit {
-  profile$: Observable<Response>;
+  profile$: Observable<ProfileResponse>;
 
   constructor(private store: Store<ProfileState>) {
     // this.dataService.getProfile()

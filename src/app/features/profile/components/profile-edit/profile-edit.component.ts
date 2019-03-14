@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ProfileResponse } from '../../../../modules/interface/profile-data.interface';
+import { ProfileResponse } from '../../../../interface/profile-data.interface';
 import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { GetProfile, UpdateProfile } from './../../../../modules/profile/store/profile.actions';

@@ -24,13 +24,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { ProfileEffects } from '../app/modules/profile/store/profile.effects';
 
 
-// summarize all components into index.ts file and export all, then import in the [component]module.ts),
-// modules (services go in with the features/modules),
-// root (root feature)
-
-// features = things that do not consume the same modules
-// root feature = header, nav, body, footer, for example
-
+// TODO: summarize all components into index.ts file and export all, then import in the [component]module.ts),
 // separate into routing module, and further isolate into thigns such as Dashboard Routing, etc
 // explore lazy loading later on in the sections
 
@@ -60,7 +54,7 @@ import { ProfileEffects } from '../app/modules/profile/store/profile.effects';
         persist: true
       }
     }),
-    EffectsModule.forRoot([ProfileEffects])
+    EffectsModule.forRoot([]),
   ],
   providers: [],
   bootstrap: [AppComponent]

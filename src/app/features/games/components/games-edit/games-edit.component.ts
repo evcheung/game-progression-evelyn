@@ -9,6 +9,9 @@ import { GamesState } from '../../../../modules/games/store/games.reducer';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { aboveZeroValidator } from 'src/app/modules/games/services/games-validators.directive';
 import { aboveEqualZeroValidator } from '../../../../modules/games/services/games-validators.directive';
+import { GamesResponse } from '../../../../interface/dashboard-data.interface';
+import { PlatformsResponse } from '../../../../interface/platform-data.interface';
+import { ModifiedGamesResponse } from '../../../../interface/games-data.interface';
 
 
 @Component({
@@ -18,22 +21,10 @@ import { aboveEqualZeroValidator } from '../../../../modules/games/services/game
 })
 export class GamesEditComponent implements OnInit {
   games$: Observable<any>;
-  // selectedGame = [{
-  //   completionDate: "3/21/2019",
-  //   dateCreated: "2018-09-11T14:07:46+00:00",
-  //   id: 1,
-  //   image: "https://howlongtobeat.com/gameimages/38050_God_of_War.jpg",
-  //   isComplete: false,
-  //   name: "God of War",
-  //   numberOfHoursPlayed: 2,
-  //   numberOfHoursToComplete: 19.5,
-  //   percentCompleted: "10.3",
-  //   platform: "PS4",
-  //   platformId: 1,
-  //   priority: 8,
-  // }];
 
-  selectedGame: {};
+  selectedGame: ModifiedGamesResponse;
+  // ASK: was getting errors in terminal about properties not existing if just typed as object
+  // Good practice to make another interface of the modified games object?
 
   gameForm: FormGroup;
 
@@ -42,7 +33,8 @@ export class GamesEditComponent implements OnInit {
   getGame() {
     const id = +this.route.snapshot.paramMap.get('id');
     this.games$.subscribe((val: []) => {
-      this.selectedGame = val.filter(x => x.id === id)[0];
+      this.selectedGame = val.filter((x: GamesResponse) => x.id === id)[0];
+      // ASK: should I be typing these?
     });
     console.log('selected game', this.selectedGame);
   }
@@ -53,8 +45,11 @@ export class GamesEditComponent implements OnInit {
       const allGameValues = {
         ...this.selectedGame,
         ...this.gameForm.value,
-        platformId: this.platforms.filter(x => x.name === this.gameForm.value.platform)[0].id
+        platformId: this.platforms.filter((x: PlatformsResponse) => x.name === this.gameForm.value.platform)[0].id
+        // ASK: should I be typing these?
       };
+
+      // Destructuring to remove unwanted values for PUT request
 
       const {
         platform,
@@ -78,10 +73,9 @@ export class GamesEditComponent implements OnInit {
     this.getGame();
 
     this.store.dispatch(new GetPlatforms());
-
     this.store.select(getPlatformsDataState).subscribe(val => this.platforms = val)
 
-    // TODO: is this good architecture? Getting platforms here?
+    // ASK: is this good architecture? Getting platforms here?
 
     this.gameForm = new FormGroup({
       name: new FormControl(this.selectedGame.name, Validators.required),

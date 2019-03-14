@@ -2,11 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { environment } from '../../../../environments/environment';
-import { GamesResponse } from '../../interface/dashboard-data.interface';
-
-
-// TODO: archiectural question
-// Ok that this is sharing the response inteface with dashboard? And is the exact same service?
+import { GamesResponse } from '../../../interface/dashboard-data.interface';
 
 @Injectable()
 export class DataService {

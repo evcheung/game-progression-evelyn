@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../../../modules/profile/services/profile-data.service';
 import { Store } from '@ngrx/store';
-import { ProfileResponse } from '../../../modules/interface/profile-data.interface';
+import { ProfileResponse } from '../../../interface/profile-data.interface';
 import { Observable } from 'rxjs';
 import { GetProfile } from './../../../../app/modules/profile/store/profile.actions';
 import { ProfileState } from '../../../../app/modules/profile/store/profile.reducer';

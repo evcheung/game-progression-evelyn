@@ -9,8 +9,8 @@ import { Store } from '@ngrx/store';
 import { GamesState } from '../../../../app/modules/games/store/games.reducer';
 import { gamesTransform } from '../store/games.transformation';
 import { getProfileDataState } from './../../profile/store/profile.selectors';
-import { GamesResponse } from '../../interface/games-data.interface';
-import { PlatformsResponse } from '../../interface/platform-data.interface';
+import { GamesResponse } from '../../../interface/games-data.interface';
+import { PlatformsResponse } from '../../../interface/platform-data.interface';
 @Injectable()
 export class GamesEffects {
   constructor(private actions$: Actions, private router: Router, private dataService: DataService, private store: Store<any>) { }
