@@ -13,13 +13,18 @@ import { profileReducer } from '../../../app/modules/profile/store/profile.reduc
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { ProfileEffects } from './store/profile.effects';
-import { FeatureHeaderComponent } from '../ui-components/feature-header.component';
+import { FeatureHeaderTitleComponent } from '../ui-components/common/feature-header-title.component';
+import { FeatureHeaderButtonComponent } from '../ui-components/common/feature-header-button.component';
+import { ProfileHeaderComponent } from '../../features/profile/components/profile/profile-header.component';
+import { FeatureHeaderComponent } from '../ui-components/common/feature-header.component';
 
 @NgModule({
   declarations: [
     ProfileComponent,
     ProfileEditComponent,
+    FeatureHeaderButtonComponent,
     FeatureHeaderComponent,
+    ProfileHeaderComponent,
     // TODO: move directive to profile-edit feature component
     HoursValidatorDirective,
   ],
@@ -35,6 +40,7 @@ import { FeatureHeaderComponent } from '../ui-components/feature-header.componen
   exports: [
     ProfileComponent,
     ProfileEditComponent,
+    FeatureHeaderButtonComponent,
     FeatureHeaderComponent,
   ],
   providers: [DataService],

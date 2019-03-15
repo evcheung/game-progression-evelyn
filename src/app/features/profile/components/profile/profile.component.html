@@ -4,7 +4,8 @@
       <h2>My Profile</h2>
       <a routerLink="/my-profile/edit"><button>Edit</button></a>
     </div> -->
-    <app-feature-header title="My Profile" routerLink="/my-profile/edit"></app-feature-header>
+    <app-profile-header></app-profile-header>
+
 
     <div *ngIf="(profile$ | async) as profile" class="profile_container--info">
       <div>

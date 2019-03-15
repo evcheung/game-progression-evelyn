@@ -1,0 +1,25 @@
+@import '../../../../sass/variables';
+
+.feature-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 12px;
+  background: $mediumColor;
+  color: $textOnDark;
+  border-radius: 0.4rem;
+}
+
+.feature-header h2 {
+  font-size: 1rem;
+}
+
+.normal-button {
+  padding: 6px 46px;
+  text-transform: uppercase;
+  border-radius: 0.25rem;
+  border: none;
+  background: $lightColor;
+  color: $textOnWhite;
+  cursor: pointer;
+}

@@ -5,7 +5,7 @@ import { Component, Input } from '@angular/core';
   template: `
     <div class="feature-header">
       <h2>{{ title }}</h2>
-      <a routerLink="{{ routerLink }}"><button>Edit</button></a>
+      <ng-content></ng-content>
     </div>
   `,
   styleUrls: ['./ui-components.component.scss']
@@ -13,6 +13,5 @@ import { Component, Input } from '@angular/core';
 export class FeatureHeaderComponent {
 
   @Input() title: string;
-  @Input() routerLink: string;
 
 }

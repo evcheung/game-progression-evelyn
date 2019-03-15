@@ -31,9 +31,6 @@ export class ProfileComponent implements OnInit {
     // this.testing = store.select('profile');
   }
 
-  // test() {
-  //   this.store.dispatch(new Test());
-  // }
 
   ngOnInit() {
     this.store.dispatch(new GetProfile());
