@@ -7,6 +7,7 @@ import { Store } from '@ngrx/store';
 import { GetProfile, UpdateProfile } from './../../../../modules/profile/store/profile.actions';
 import { ProfileState } from '../../../../modules/profile/store/profile.reducer';
 import { getProfileDataState } from '../../../../modules/profile/store/profile.selectors';
+import { modifyProfile } from 'src/app/modules/profile/services/profile.functions';
 
 @Component({
   selector: 'app-profile-edit',
@@ -24,15 +25,7 @@ export class ProfileEditComponent implements OnInit {
 
   onSubmit() {
     if (this.profileForm.valid) {
-      this.store
-        .select(getProfileDataState)
-        .subscribe(val => (this.profileDataState = val));
-
-      const formValues = {
-        ...this.profileDataState,
-        ...this.profileForm.form.value
-      };
-
+      const formValues = modifyProfile(this.profileDataState, this.profileForm.form.value);
       this.store.dispatch(new UpdateProfile(formValues));
     } else {
       alert('Invalid form');
@@ -48,6 +41,7 @@ export class ProfileEditComponent implements OnInit {
     // });
   }
 
+// TODO: how to move this out into functions file? i.e. how to handle the routing
   onCancel() {
     return this.profileForm.dirty
       ? confirm('Are you sure you want to leave without saving changes?') &&
@@ -58,5 +52,6 @@ export class ProfileEditComponent implements OnInit {
   ngOnInit() {
     this.store.dispatch(new GetProfile());
     this.profile$ = this.store.select(getProfileDataState);
+    this.profile$.subscribe(val => this.profileDataState = val);
   }
 }

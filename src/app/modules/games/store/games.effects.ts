@@ -7,7 +7,7 @@ import { of } from 'rxjs';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { GamesState } from '../../../../app/modules/games/store/games.reducer';
-import { gamesTransform } from '../store/games.transformation';
+import { gamesTransform } from '../services/games.transformation';
 import { getProfileDataState } from './../../profile/store/profile.selectors';
 import { GamesResponse } from '../../../interface/games-data.interface';
 import { PlatformsResponse } from '../../../interface/platform-data.interface';
@@ -27,7 +27,7 @@ export class GamesEffects {
           return this.dataService.getPlatforms()
             .pipe(
               map((platformsData: any) => {
-                console.log('[games] GET platforms success', platformsData);
+                // console.log('[games] GET platforms success', platformsData);
                 const updatedGames = gamesTransform(gamesData, platformsData, profile.averageNumberOfHoursPerDay);
                 console.log('updated Games', updatedGames);
                 return new GamesActions.GetGamesSuccess(updatedGames);

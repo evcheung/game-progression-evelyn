@@ -1,10 +1,3 @@
-// import { getProfileDataState } from '../../profile/store/profile.selectors';
-// import { Store } from '@ngrx/store';
-
-// let avgHours;
-// this.store.select(getProfileDataState).subscribe(val => avgHours = val);
-
-
 export const gamesTransform = (games, platforms, avgHours) => {
   return games.map(game => {
     const platformFiltered = platforms.filter(platform => {

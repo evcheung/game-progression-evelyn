@@ -21,8 +21,6 @@ import { GamesModule } from './modules/games/games.module';
 // ngRx
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
-import { ProfileEffects } from '../app/modules/profile/store/profile.effects';
-
 
 // TODO: summarize all components into index.ts file and export all, then import in the [component]module.ts),
 // separate into routing module, and further isolate into thigns such as Dashboard Routing, etc

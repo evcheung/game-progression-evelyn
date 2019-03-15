@@ -12,6 +12,7 @@ import { aboveEqualZeroValidator } from '../../../../modules/games/services/game
 import { GamesResponse } from '../../../../interface/dashboard-data.interface';
 import { PlatformsResponse } from '../../../../interface/platform-data.interface';
 import { ModifiedGamesResponse } from '../../../../interface/games-data.interface';
+import { getGame, modifyGame } from '../../../../modules/games/services/games-functions';
 
 
 @Component({
@@ -21,45 +22,14 @@ import { ModifiedGamesResponse } from '../../../../interface/games-data.interfac
 })
 export class GamesEditComponent implements OnInit {
   games$: Observable<any>;
-
+  games: [];
   selectedGame: ModifiedGamesResponse;
-  // ASK: was getting errors in terminal about properties not existing if just typed as object
-  // Good practice to make another interface of the modified games object?
-
   gameForm: FormGroup;
-
-  platforms;
-
-  getGame() {
-    const id = +this.route.snapshot.paramMap.get('id');
-    this.games$.subscribe((val: []) => {
-      this.selectedGame = val.filter((x: GamesResponse) => x.id === id)[0];
-      // ASK: should I be typing these?
-    });
-    console.log('selected game', this.selectedGame);
-  }
+  platforms: [];
 
   onSubmit() {
     if (this.gameForm.valid) {
-
-      const allGameValues = {
-        ...this.selectedGame,
-        ...this.gameForm.value,
-        platformId: this.platforms.filter((x: PlatformsResponse) => x.name === this.gameForm.value.platform)[0].id
-        // ASK: should I be typing these?
-      };
-
-      // Destructuring to remove unwanted values for PUT request
-
-      const {
-        platform,
-        percentCompleted,
-        completionDate,
-        ...newGameObject } = allGameValues;
-
-
-      // console.log('form values', newGameObject);
-
+      const newGameObject = modifyGame(this.gameForm, this.selectedGame, this.platforms);
       this.store.dispatch(new UpdateGame(newGameObject));
     } else {
       alert('Invalid form');
@@ -70,7 +40,11 @@ export class GamesEditComponent implements OnInit {
 
   ngOnInit() {
     this.games$ = this.store.select(getGamesDataState);
-    this.getGame();
+    this.games$.subscribe((val: []) => {
+      this.games = val;
+    });
+
+    this.selectedGame = getGame(this.games, +this.route.snapshot.paramMap.get('id'));
 
     this.store.dispatch(new GetPlatforms());
     this.store.select(getPlatformsDataState).subscribe(val => this.platforms = val)

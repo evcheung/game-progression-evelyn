@@ -13,11 +13,13 @@ import { profileReducer } from '../../../app/modules/profile/store/profile.reduc
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { ProfileEffects } from './store/profile.effects';
+import { FeatureHeaderComponent } from '../ui-components/feature-header.component';
 
 @NgModule({
   declarations: [
     ProfileComponent,
     ProfileEditComponent,
+    FeatureHeaderComponent,
     // TODO: move directive to profile-edit feature component
     HoursValidatorDirective,
   ],
@@ -32,7 +34,8 @@ import { ProfileEffects } from './store/profile.effects';
   ],
   exports: [
     ProfileComponent,
-    ProfileEditComponent
+    ProfileEditComponent,
+    FeatureHeaderComponent,
   ],
   providers: [DataService],
 })

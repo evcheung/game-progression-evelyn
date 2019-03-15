@@ -4,6 +4,7 @@ import { GetGames } from '../../../../modules/games/store/games.actions';
 import { Observable } from 'rxjs';
 import { getGamesDataState } from '../../../../modules/games/store/games.selectors';
 import { initialState, GamesState } from '../../../../modules/games/store/games.reducer';
+import { checkGames } from '../../../../modules/games/services/games-functions';
 
 
 @Component({
@@ -13,8 +14,6 @@ import { initialState, GamesState } from '../../../../modules/games/store/games.
 })
 export class GamesComponent implements OnInit {
   games$: Observable<any>;
-
-  gamesState;
   noGames = false;
 
   constructor(private store: Store<GamesState>) { }
@@ -22,13 +21,8 @@ export class GamesComponent implements OnInit {
   ngOnInit() {
     this.store.dispatch(new GetGames());
     this.games$ = this.store.select(getGamesDataState);
-    this.store.select(getGamesDataState).subscribe(val =>{
-      if (val === initialState.data || val.length === 0) {
-        this.noGames = true;
-      } else {
-        this.noGames = false;
-      }
-      // console.log(this.noGames)
+    this.store.select(getGamesDataState).subscribe((val: []) => {
+      this.noGames = checkGames(val, initialState);
     });
 
   }

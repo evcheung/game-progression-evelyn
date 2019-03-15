@@ -1,8 +1,9 @@
 import * as GamesActions from './games.actions';
+import { PlatformsResponse } from '../../../interface/platform-data.interface';
 
 export interface GamesState {
-  data: [];
-  platforms: [];
+  data: []; // typing with ModifiedGamesResponse is causing errors in games.component
+  platforms: PlatformsResponse;
   loading: boolean;
   error: any;
 }
